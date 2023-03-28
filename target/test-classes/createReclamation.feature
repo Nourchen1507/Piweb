@@ -1,6 +1,6 @@
       	Feature: User can make a reclamation.
 Scenario Outline: User create reclamation
-    Given  reclamation with <id> <isSignal> <isBan> <isRate>  <banDate> <FeedBack> <raison> <blockedBy>
+    Given  reclamation with <id> <isSignal> <isBan> <isRate>  <banDate> <FeedBack> <raison> <blockedBy> <exist>
     When User add this reclamation to list
     Then The result should be <result>
 
