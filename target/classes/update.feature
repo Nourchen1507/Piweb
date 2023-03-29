@@ -1,8 +1,8 @@
 	Feature: user can update a reclamation.
 Scenario Outline: user update reclamation by id
-    Given  user retrieve reclamation with id <id> ,old feedback <oldFeedback> and new feedback <newFeedback>
-    When user update reclamation with id <id> at its feedback <oldFeedback> with the new feedback <newFeedback>
-    Then assert that reclamation has new name <newFeedback>
+    Given  User retrieve reclamation with id <id> ,old feedback <oldFeedback>
+    When User update reclamation with id <id> at its feedback <oldFeedback> with the new feedback <newFeedback>
+    Then Assert that reclamation has new feedback <newFeedback>
 
     Examples: 
       |     id              |   oldFeedback               |           newFeedback       |

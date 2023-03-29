@@ -28,6 +28,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "user")
+@NoArgsConstructor
 public class User {
 
 	@Id
@@ -42,6 +43,7 @@ public class User {
 	private LocalDateTime unavailibility;
 	private Boolean isDisabled;
 	private String certificat;
+	private Boolean alreadyBanned;
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private List<Post> posts = new ArrayList<>();

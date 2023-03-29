@@ -19,7 +19,6 @@ import lombok.Setter;
 
 @Entity
 @Getter
-@Setter
 @Table(name = "reclamation")
 public class Reclamation {
 	
@@ -34,13 +33,13 @@ public class Reclamation {
 	private Boolean isBan;
 	
 	@Nullable
-	private Boolean isRate;
+	private Integer rateLevel;
 	
 	@Nullable
-	private LocalDateTime banDate;
+	private LocalDateTime unbanDate;
 	
 	@Nullable
-	private String FeedBack;
+	private String feedback;
 	
 	@Nullable
 	private String raison;
@@ -56,64 +55,108 @@ public class Reclamation {
     private User user;
 	
 	
-	private Reclamation() {
-		
+	
+	
+	
+	
+	
+	public void setRateLevel(Integer rateLevel) {
+		this.rateLevel = rateLevel;
 	}
-	
-	
-	
+
+
+	public void setFeedback(String feedback) {
+		this.feedback = feedback;
+	}
+
+
+
+	public void setCreatedOn(LocalDateTime createdOn) {
+		this.createdOn = createdOn;
+	}
+
+
+	public Reclamation(Builder builder) {
+		super();
+		this.id = builder.id;
+		this.isSignal = builder.isSignal;
+		this.isBan = builder.isBan;
+		this.rateLevel = builder.rateLevel;
+		this.unbanDate = builder.unbanDate;
+		this.feedback = builder.feedback;
+		this.raison = builder.raison;
+		this.blockedBy = builder.blockedBy;
+		this.createdOn = builder.createdOn;
+		this.user = builder.user;
+	}
+
+
 	// Builder pour créer de nouveaux objets Person
     public static class Builder {
-        private final Reclamation reclamation = new Reclamation();
-        
+    	private Long id;
+    	private Boolean isSignal;
+    	private Boolean isBan;
+       	private Integer rateLevel;
+       	private LocalDateTime unbanDate;
+    	private String feedback;
+       	private String raison;
+    	private Long blockedBy;
+    	private LocalDateTime createdOn;
+    	private User user;
+    	
         public Builder id(Long id) {
-            reclamation.setId(id);
+            this.id=id;
             return this;
         }
 
         public Builder isSignal(Boolean isSignal) {
-            reclamation.setIsSignal(isSignal);
+            this.isSignal=isSignal;
             return this;
         }
 
         public Builder isBan(Boolean isBan) {
-            reclamation.setIsBan(isBan);
+            this.isBan=isBan;
             return this;
         }
 
-        public Builder isRate(Boolean isRate) {
-            reclamation.setIsRate(isRate);
+        public Builder rateLevel(Integer rateLevel) {
+            this.rateLevel=rateLevel;
             return this;
         }
         
-        public Builder banDate(LocalDateTime banDate) {
-            reclamation.setBanDate(banDate);
+        public Builder unbanDate(LocalDateTime banDate) {
+            this.unbanDate=banDate;
             return this;
         }
 
         
         public Builder feedback(String feedback) {
-            reclamation.setFeedBack(feedback);
-            return this;
+            this.feedback=feedback;
+            return this; 
         }
         
         public Builder raison(String raison) {
-            reclamation.setRaison(raison);
+            this.raison=raison;
             return this;
         }
 
         public Builder blockedBy(Long blocker) {
-            reclamation.setBlockedBy(blocker);
+            this.blockedBy=blocker;
             return this;
         }
         
         public Builder createdOn(LocalDateTime createdOn) {
-            reclamation.setCreatedOn(createdOn);
+            this.createdOn=createdOn;
+            return this;
+        }
+        
+        public Builder user(User user) {
+            this.user=user;
             return this;
         }
 
         public Reclamation build() {
-            return reclamation;
+            return new Reclamation(this);
         }
     }
 	

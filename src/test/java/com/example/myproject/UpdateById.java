@@ -47,7 +47,7 @@ Reclamation oldReclamation ,newReclamation1;
 
 	@Then("^Assert that Reclamation has new feedback \"([^\"]*)\"$")
 	public void assert_that_Reclamation_has_new_feedback(String newn) throws Throwable {
-		   Assert.assertTrue(newReclamation1.getFeedBack().equals(newn));
+		   Assert.assertTrue(newReclamation1.getFeedback().equals(newn));
 	}
 	
 	public void initMocks(Long id, String oldfeedback, String newfeedback) {

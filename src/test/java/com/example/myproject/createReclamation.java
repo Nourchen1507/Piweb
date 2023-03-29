@@ -47,9 +47,9 @@ public class createReclamation {
 		 Long reclamationId = Long.valueOf(id);
 		 
 		 //reclamation creation using builder 
-	  reclamation = new Reclamation.Builder().id(reclamationId).banDate(LocalDateTime.parse(banDate))
-			  .blockedBy(Long.valueOf(blockedBy)).feedback(feedBack).isBan(Boolean.valueOf(isBan))
-			  .isRate(Boolean.valueOf(isRate)).isSignal(Boolean.valueOf(isSignal)).build();
+	  reclamation = new Reclamation.Builder().id(reclamationId).unbanDate(LocalDateTime.parse(banDate))
+			  .feedback(feedBack).isBan(Boolean.valueOf(isBan))
+			  .rateLevel(Integer.valueOf(isRate)).isSignal(Boolean.valueOf(isSignal)).build();
 	  
 	  this.initMocks(exist);
 		found=reclamationRepo.findById(reclamationId).get();
