@@ -1,36 +1,39 @@
 package com.example.myproject.entities;
 
-import java.util.Date;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import java.io.Serializable;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Table(name = "invitation")
-public class Invitation {
+
+public class Invitation implements Serializable {
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private Long id;
+	@NonNull
+	private Long idInvitation;
+	@NonNull
+	private String name;
+	@NonNull
 	private Long helperInvited;
+
+
+	@Enumerated(EnumType.STRING)
+	Status statut;
 	
 	@ManyToOne
 	@JoinColumn(name = "event_id")
 	@JsonIgnore
     private Event event;
+
+
 
 }
