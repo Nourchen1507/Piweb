@@ -1,5 +1,7 @@
 package com.example.myproject.Controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -10,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.data.domain.*;
 
+import com.example.myproject.Repository.UserRepository;
 import com.example.myproject.Service.ReclamationService;
 import com.example.myproject.entities.Reclamation;
+import com.example.myproject.entities.User;
 
 
 @RestController
@@ -21,12 +25,45 @@ public class ReclamationController {
 	@Autowired
     ReclamationService reclamationService;
 	
+	@Autowired  
+	UserRepository userRepo;
 	
-	@PostMapping
-    public ResponseEntity<Reclamation> createReclamation(@RequestBody Reclamation reclamation) {
-		Reclamation createdReclamation = reclamationService.createReclamation(reclamation);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdReclamation);
+	@PostMapping("/reclamation/{userId}")
+    public ResponseEntity<Reclamation> createReclamation(@PathVariable Long userId, @RequestBody Reclamation reclamation) {
+		Optional<User> user = userRepo.findById(userId);
+		
+		if( user.isPresent()) {
+			
+			reclamation.setUser(user.get());
+			System.out.println("reclamation=================="+reclamation);
+			
+		if(reclamation.getIsSignal()!=null) {
+			
+			reclamationService.signal(userId,reclamation);
+	        return ResponseEntity.status(HttpStatus.CREATED).body(reclamation);
+
+		}else {
+			
+			Reclamation createdReclamation = reclamationService.createReclamation(reclamation);
+	        return ResponseEntity.status(HttpStatus.CREATED).body(createdReclamation);
+		}
+		}else {
+			
+	        return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body(reclamation);
+
+		}
+		
+		
+		}
+	
+	
+	@PostMapping("/user")
+    public ResponseEntity<User> createuser(@RequestBody User user) {
+		User created = userRepo.save(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
+	
+	
 
 
 	//its not the traditional getAll() method, its based on pagination to improve the performance of our app

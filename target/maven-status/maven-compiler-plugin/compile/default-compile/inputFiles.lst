@@ -3,6 +3,8 @@
 /home/skander/Documents/pi/piwebBack/src/main/java/com/example/myproject/entities/Appointment.java
 /home/skander/Documents/pi/piwebBack/src/main/java/com/example/myproject/entities/Alarm.java
 /home/skander/Documents/pi/piwebBack/src/main/java/com/example/myproject/MyprojectApplication.java
+/home/skander/Documents/pi/piwebBack/src/main/java/com/example/myproject/configuration/CucumberConfig.java
+/home/skander/Documents/pi/piwebBack/src/main/java/com/example/myproject/configuration/BanScheduler.java
 /home/skander/Documents/pi/piwebBack/src/main/java/com/example/myproject/entities/DonType.java
 /home/skander/Documents/pi/piwebBack/src/main/java/com/example/myproject/entities/Role.java
 /home/skander/Documents/pi/piwebBack/src/main/java/com/example/myproject/entities/Reclamation.java

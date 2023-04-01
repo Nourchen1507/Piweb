@@ -1,7 +1,8 @@
 package com.example.myproject.entities;
 
-import java.time.LocalDateTime; 
+import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,44 +15,44 @@ import org.springframework.lang.Nullable;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
-@Getter
+@Getter 
 @Table(name = "reclamation")
+@NoArgsConstructor
 public class Reclamation {
+	
+
+	
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Nullable
-	private Boolean isSignal;
+	private Boolean isSignal; 
 	
-	@Nullable
 	private Boolean isBan;
 	
-	@Nullable
 	private Integer rateLevel;
 	
-	@Nullable
 	private LocalDateTime unbanDate;
 	
-	@Nullable
 	private String feedback;
 	
-	@Nullable
 	private String raison;
 	
-	@Nullable
 	private Long blockedBy;
 	
 	private LocalDateTime createdOn;
 	
 	@ManyToOne
 	@JoinColumn(name = "user_id")
-	@JsonIgnore
     private User user;
 	
 	
@@ -73,6 +74,14 @@ public class Reclamation {
 
 	public void setCreatedOn(LocalDateTime createdOn) {
 		this.createdOn = createdOn;
+	}
+	
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	public void setRaison(String raison) {
+		this.raison = raison;
 	}
 
 

@@ -83,6 +83,25 @@
     <artifactId>spring-boot-starter-mail</artifactId>
 </dependency>
 
+<dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-core</artifactId>
+    <version>6.11.0</version>
+</dependency>
+
+
+<dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-java</artifactId>
+    <version>6.11.0</version>
+</dependency>
+
+
+<dependency>
+    <groupId>io.netty</groupId>
+    <artifactId>netty-all</artifactId>
+    <version>4.1.36.Final</version>
+</dependency>
        
     </dependencies>
 

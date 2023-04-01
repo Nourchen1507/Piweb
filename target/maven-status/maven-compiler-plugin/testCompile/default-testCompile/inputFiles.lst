@@ -1,1 +1,7 @@
-/home/skander/Documents/pi/piwebBack/src/test/java/com/example/myproject/MyprojectApplicationTests.java
+/home/skander/Documents/pi/piwebBack/src/test/java/com/example/myproject/config/Config.java
+/home/skander/Documents/pi/piwebBack/src/test/java/com/example/myproject/UpdateById.java
+/home/skander/Documents/pi/piwebBack/src/test/java/com/example/myproject/BddServiceTest.java
+/home/skander/Documents/pi/piwebBack/src/test/java/com/example/myproject/DeleteById.java
+/home/skander/Documents/pi/piwebBack/src/test/java/com/example/myproject/createReclamation.java
+/home/skander/Documents/pi/piwebBack/src/test/java/com/example/myproject/GetAll.java
+/home/skander/Documents/pi/piwebBack/src/test/java/com/example/myproject/GetById.java

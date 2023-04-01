@@ -16,18 +16,20 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.print.attribute.standard.DateTimeAtCompleted;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
  
 
 @Entity
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "user")
+@Table(name = "user") 
 @NoArgsConstructor
 public class User {
 
@@ -44,11 +46,13 @@ public class User {
 	private Boolean isDisabled;
 	private String certificat;
 	private Boolean alreadyBanned;
+	private LocalDateTime unbanDate;
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private List<Post> posts = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
+	@JsonIgnore
 	private List<Reclamation> reclamations = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
