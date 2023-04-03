@@ -1,7 +1,7 @@
-package com.example.myproject.User;
+package com.example.myproject.Service;
 
 import com.example.myproject.Exception.UserNotFoundException;
-import com.example.myproject.User.Twilio.SmsServiceImpl;
+import com.example.myproject.Service.Twilio.SmsServiceImpl;
 import com.example.myproject.entities.*;
 import com.example.myproject.repositories.PasswordResetTokenRepository;
 import com.example.myproject.repositories.RoleRepository;

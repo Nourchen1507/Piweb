@@ -1,6 +1,6 @@
 package com.example.myproject.controllers;
 
-import com.example.myproject.User.JwtService;
+import com.example.myproject.Service.JwtService;
 import com.example.myproject.entities.JwtRequest;
 import com.example.myproject.entities.JwtResponse;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.example.myproject.controllers;
 
-import com.example.myproject.User.RoleService;
+import com.example.myproject.Service.RoleService;
 import com.example.myproject.entities.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,8 +1,8 @@
 package com.example.myproject.controllers;
 
-import com.example.myproject.User.EmailService;
-import com.example.myproject.User.UserService;
-import com.example.myproject.User.VerificationTokenService;
+import com.example.myproject.Service.EmailService;
+import com.example.myproject.Service.UserService;
+import com.example.myproject.Service.VerificationTokenService;
 import com.example.myproject.entities.*;
 import com.example.myproject.repositories.UserRepository;
 import com.example.myproject.util.UserCode;

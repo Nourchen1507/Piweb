@@ -1,4 +1,4 @@
-package com.example.myproject.User.Twilio;
+package com.example.myproject.Service.Twilio;
 
 import com.example.myproject.configuration.UserSMS.TwilioConfig;
 import com.twilio.Twilio;

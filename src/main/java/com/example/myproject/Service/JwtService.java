@@ -1,12 +1,10 @@
-package com.example.myproject.User;
+package com.example.myproject.Service;
 
 import com.example.myproject.entities.JwtRequest;
 import com.example.myproject.entities.JwtResponse;
 import com.example.myproject.entities.User;
 import com.example.myproject.repositories.UserRepository;
 import com.example.myproject.util.JwtUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
