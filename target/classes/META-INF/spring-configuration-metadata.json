@@ -1,0 +1,27 @@
+{
+  "groups": [
+    {
+      "name": "twilio",
+      "type": "com.example.myproject.configuration.UserSMS.TwilioConfig",
+      "sourceType": "com.example.myproject.configuration.UserSMS.TwilioConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "twilio.account-sid",
+      "type": "java.lang.String",
+      "sourceType": "com.example.myproject.configuration.UserSMS.TwilioConfig"
+    },
+    {
+      "name": "twilio.auth-token",
+      "type": "java.lang.String",
+      "sourceType": "com.example.myproject.configuration.UserSMS.TwilioConfig"
+    },
+    {
+      "name": "twilio.sender-number",
+      "type": "java.lang.String",
+      "sourceType": "com.example.myproject.configuration.UserSMS.TwilioConfig"
+    }
+  ],
+  "hints": []
+}
