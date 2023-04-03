@@ -38,7 +38,7 @@ public class ImageService {
         imageRepository.save(image1);
 
         return ResponseEntity.status(HttpStatus.OK)
-                .body(new ImageUploadResponse("Image uploaded successfully: " +
+                .body(new ImageUploadResponse("Image Uploaded successfully: " +
                         file.getOriginalFilename()));
 
 
