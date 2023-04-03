@@ -83,7 +83,7 @@ public class UserController {
     @GetMapping({"/forHelper"})
     @PreAuthorize("hasRole('helper')")
     public String forHelper(){
-        return "This URL is only accessible to the helper";
+        return "This URL is Only accessible to the helper";
     }
 
     @DeleteMapping ({"/delete/{userName}"})
