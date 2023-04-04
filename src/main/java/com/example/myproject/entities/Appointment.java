@@ -20,10 +20,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Table(name = "appointment")
@@ -37,12 +39,10 @@ public class Appointment {
 	
 	@ManyToOne
 	@JoinColumn(name = "helper_id")
-	@JsonIgnore
     private User helper;
 	
 	@ManyToOne
 	@JoinColumn(name = "organization_id")
-	@JsonIgnore
     private User organization;
 	
 	

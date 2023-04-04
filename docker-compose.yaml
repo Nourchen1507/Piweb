@@ -1,0 +1,18 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    command:
+      - mysqld
+      - --explicit_defaults_for_timestamp=true
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE=pidb
+    ports:
+      - "3306:3306"
+    networks:
+      - mysql-network
+networks:
+  mysql-network:
