@@ -1,5 +1,6 @@
 package com.example.myproject.entities;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
@@ -12,24 +13,32 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 @Entity
-@AllArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Table(name = "alarm")
-public class Alarm {
+public class Alarm implements Serializable {
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private Long id;
-	
+	private Long idAlarm;
+
+	@NonNull
+	private String name;
+
+
+
 	@ManyToOne
 	@JoinColumn(name = "appointment_id")
-	@JsonIgnore
+	//@JsonIgnore
     private Appointment appointment;
 	
 	
