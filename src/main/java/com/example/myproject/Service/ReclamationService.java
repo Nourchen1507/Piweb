@@ -30,8 +30,13 @@ public class ReclamationService {
 	@Autowired
     private JavaMailSender javaMailSender;
 
-	 public Page<Reclamation> getAllReclamations(Pageable pageable) {
+	 public Page<Reclamation> getAllReclamations(Pageable pageable, String exactly) {
+		 if (exactly.equals("feedBack"))
 	        return reclamationRepo.findAllByFeedbackIsNotNull(pageable);
+		 else if (exactly.equals("rate"))
+		        return reclamationRepo.findAllByRateLevelIsNotNull(pageable);
+		 else 
+		        return reclamationRepo.findAllByIsSignalIsNotNull(pageable);
 	    }
 
 	 
@@ -48,6 +53,8 @@ public class ReclamationService {
 	    	
 	        return reclamationRepo.save(reclamation);
 	    }
+	    
+	  
 
 	    public Reclamation updateReclamation(Reclamation reclamationDetails) {
 	    	Reclamation reclamation = getReclamationById(reclamationDetails.getId());

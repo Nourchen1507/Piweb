@@ -28,22 +28,21 @@ public class ReclamationController {
 	@Autowired  
 	UserRepository userRepo;
 	
-	@PostMapping("/reclamation/{userId}")
+	@PostMapping("/{userId}")
     public ResponseEntity<Reclamation> createReclamation(@PathVariable Long userId, @RequestBody Reclamation reclamation) {
 		Optional<User> user = userRepo.findById(userId);
 		
 		if( user.isPresent()) {
-			
 			reclamation.setUser(user.get());
 			System.out.println("reclamation=================="+reclamation);
 			
-		if(reclamation.getIsSignal()!=null) {
-			
+		if(reclamation.getIsSignal()!=null && reclamation.getIsSignal()) {
+			//signaling
 			reclamationService.signal(userId,reclamation);
 	        return ResponseEntity.status(HttpStatus.CREATED).body(reclamation);
 
 		}else {
-			
+			//feedbacking or rating
 			Reclamation createdReclamation = reclamationService.createReclamation(reclamation);
 	        return ResponseEntity.status(HttpStatus.CREATED).body(createdReclamation);
 		}
@@ -66,12 +65,12 @@ public class ReclamationController {
 	
 
 
-	//its not the traditional getAll() method, its based on pagination to improve the performance of our app
-    @GetMapping
+	//its not the way of the traditional getAll() method, its based on pagination to improve the performance of our app
+    @GetMapping("/reclamations/{exactly}")
     public ResponseEntity<Page<Reclamation>> getAllReclamations(@RequestParam(defaultValue = "0") int page,
-                                                   @RequestParam(defaultValue = "10") int size) {
+                                                   @RequestParam(defaultValue = "5") int size, @PathVariable String exactly) {
         Pageable pageable = PageRequest.of(page, size);
-        Page<Reclamation> pageReclamations = reclamationService.getAllReclamations(pageable);
+        Page<Reclamation> pageReclamations = reclamationService.getAllReclamations(pageable, exactly);
         return new ResponseEntity<>(pageReclamations, HttpStatus.OK);
     }
 

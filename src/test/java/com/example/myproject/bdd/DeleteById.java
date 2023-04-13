@@ -58,7 +58,7 @@ public class DeleteById {
 		oldReclamationList.add(reclamation3);
 		
 		 this.initMocks(oldReclamationList);
-		  newReclamationList=reclamationService.getAllReclamations(null).toList();
+		  newReclamationList=reclamationService.getAllReclamations(null,"feedBack").toList();
 
 	   
 	}
@@ -77,7 +77,7 @@ public class DeleteById {
 		}
 		newList.remove(1);
 
-		Mockito.when(reclamationService.getAllReclamations(null).toList()).thenReturn(newList);
+		Mockito.when(reclamationService.getAllReclamations(null,"feedBack").toList()).thenReturn(newList);
 
 
 }

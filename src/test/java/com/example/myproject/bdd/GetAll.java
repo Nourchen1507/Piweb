@@ -50,7 +50,7 @@ public class GetAll {
 
 	@When("^User retrieve all Reclamations from database$")
 	public void user_retrieve_all_Reclamations_from_database() throws Throwable {
-		foundList = reclamationService.getAllReclamations(null).toList();
+		foundList = reclamationService.getAllReclamations(null, "feedBack").toList();
 
 	}
 
@@ -70,9 +70,9 @@ public class GetAll {
 		List<Reclamation> reclamationsList= new ArrayList<>();
 		reclamationsList.add(new Reclamation.Builder().id(1L).build());
 			if(empty.equals("empty")) {
-				Mockito.when(reclamationService.getAllReclamations(null).toList()).thenReturn(null);	
+				Mockito.when(reclamationService.getAllReclamations(null, "feedBack").toList()).thenReturn(null);	
 			}else if(empty.equals("notEmpty")) {
-				Mockito.when(reclamationService.getAllReclamations(null).toList()).thenReturn(reclamationsList);	
+				Mockito.when(reclamationService.getAllReclamations(null, "feedBack").toList()).thenReturn(reclamationsList);	
 			}
 		
 	}
