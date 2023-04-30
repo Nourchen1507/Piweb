@@ -1,9 +1,9 @@
-package com.example.myproject.controller;
+package com.example.myproject.Controller;
 
 import com.example.myproject.dto.AppointmentDTO;
 import com.example.myproject.dto.CreateUpdateAppointmentDTO;
 import com.example.myproject.entities.Appointment;
-import com.example.myproject.services.AppointmentService;
+import com.example.myproject.Service.AppointmentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
