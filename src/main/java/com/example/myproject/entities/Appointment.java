@@ -42,7 +42,15 @@ public class Appointment implements Serializable {
 	@JoinColumn(name = "helper_id")
 	@JsonIgnore
     private User helper;
-	
+
+	public User getHelper() {
+		return helper;
+	}
+
+	public void setHelper(User helper) {
+		this.helper = helper;
+	}
+
 	@ManyToOne
 	@JoinColumn(name = "organization_id")
 	@JsonIgnore
@@ -52,7 +60,6 @@ public class Appointment implements Serializable {
 	@OneToMany(mappedBy = "appointment", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@JsonIgnore
 	private List<Alarm> alarms = new ArrayList<>();
-	
-	
+
 
 }

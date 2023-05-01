@@ -44,7 +44,87 @@ public class User implements Serializable {
 	private LocalDateTime unavailibility;
 	private Boolean isDisabled;
 	private String certificat;
-	
+
+	public Long getId() {
+		return id;
+	}
+
+	public String getMailAddress() {
+		return mailAddress;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public LocalDateTime getUnavailibility() {
+		return unavailibility;
+	}
+
+	public Boolean getDisabled() {
+		return isDisabled;
+	}
+
+	public String getCertificat() {
+		return certificat;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setMailAddress(String mailAddress) {
+		this.mailAddress = mailAddress;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+	public void setUnavailibility(LocalDateTime unavailibility) {
+		this.unavailibility = unavailibility;
+	}
+
+	public void setDisabled(Boolean disabled) {
+		isDisabled = disabled;
+	}
+
+	public void setCertificat(String certificat) {
+		this.certificat = certificat;
+	}
+
 	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private List<Post> posts = new ArrayList<>();
 	
@@ -59,7 +139,6 @@ public class User implements Serializable {
 	
 	@OneToMany(mappedBy = "organization", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private List<Appointment> organizationAppointments = new ArrayList<>();
-	
-	
+
 	
 }
