@@ -46,7 +46,7 @@ public class JwtService implements UserDetailsService {
             UserDetails userDetails = loadUserByUsername(userName);
             String newGeneratedToken = jwtUtil.generateToken(userDetails);
 
-            User user = userDao.findById(userName).get();
+            User user = userDao.findByUserName(userName);
             return new JwtResponse(user, newGeneratedToken);
 
         }
@@ -60,7 +60,7 @@ public class JwtService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userDao.findById(username).get();
+        User user = userDao.findByUserName(username);
 
         if (user != null) {
             return new org.springframework.security.core.userdetails.User(
@@ -75,9 +75,9 @@ public class JwtService implements UserDetailsService {
 
     private Set getAuthority(User user) {
         Set<SimpleGrantedAuthority> authorities = new HashSet<>();
-        user.getRole().forEach(role -> {
-            authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getRoleName()));
-        });
+
+            authorities.add(new SimpleGrantedAuthority("ROLE_" + user.getRole().getRoleName()));
+
         return authorities;
     }
 

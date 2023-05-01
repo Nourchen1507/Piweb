@@ -5,7 +5,9 @@ import com.example.myproject.Service.UserService;
 import com.example.myproject.Service.VerificationTokenService;
 import com.example.myproject.entities.*;
 import com.example.myproject.repositories.UserRepository;
+import com.example.myproject.request.SingupRequest;
 import com.example.myproject.util.UserCode;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -14,9 +16,12 @@ import org.springframework.web.bind.annotation.*;
 
 
 import javax.annotation.PostConstruct;
+import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
+@Slf4j
 public class UserController {
 
     @Autowired
@@ -31,12 +36,22 @@ public class UserController {
     private VerificationTokenService verificationTokenService;
 
     @PostMapping("/registerNewUser")
-    public User createUser(@RequestBody User user) {
-        User savedUser = userService.registerNewUser(user);
+    public ResponseEntity<?> createUser( @RequestBody User user) {
+        if (userDao.existsByUserName(user.getUserName())) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(("Error: Username is already taken!"));
+        }
 
+        if (userDao.existsByMailAddress(user.getMailAddress())) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(("Error: Email is already in use!"));
+        }
+        User savedUser = userService.registerNewUser(user);
         UserVerificationToken verificationToken = verificationTokenService.createVerificationToken(user); // création du jeton de vérification
         verificationTokenService.saveVerificationToken(verificationToken);
-        return savedUser;
+        return ResponseEntity.ok(("User registered successfully!"));
     }
 
     @PutMapping("/activate/{verificationToken}")
@@ -92,11 +107,14 @@ public class UserController {
         userService.delete(userName);
     }
 
-    @PutMapping  ({"/update"})
-    @PreAuthorize("hasRole('Admin')")
-    public void update(@RequestBody User user){
-        userService.update(user);
+    @PutMapping(value="/update/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) throws IOException {
+
+        User updatedUser = userService.update(id,user);
+
+        return ResponseEntity.ok(updatedUser);
     }
+
     @GetMapping("/count")
     @PreAuthorize("hasRole('Admin')")
     public long count(){return userService.count();}
@@ -120,16 +138,17 @@ public class UserController {
     }
 
 
-    // http://localhost:8080/checkEmail
     @PostMapping("/checkEmail")
     public UserAccountResponse resetPasswordEmail(@RequestBody UserResetPassword resetPassword){
-        User user = this.userService.findByMailAddress(resetPassword.getEmail());
+        log.info("hhhhh");
+        log.info(resetPassword.getMailAddress());
+        User user = this.userService.findByMailAddress(resetPassword.getMailAddress());
         UserAccountResponse accountResponse = new UserAccountResponse();
         if(user != null){
             String code = UserCode.getCode();
             System.out.println("le code est" + code);
-            UserMail mail = new UserMail(resetPassword.getEmail(),code);
-            System.out.println("le mail est" + resetPassword.getEmail());
+            UserMail mail = new UserMail(resetPassword.getMailAddress(),code);
+            System.out.println("le mail est" + resetPassword.getMailAddress());
             System.out.println("la variable mail est" + mail);
             emailService.sendCodeByMail(mail);
             System.out.println("la variable User est" + user);
@@ -142,10 +161,9 @@ public class UserController {
         return accountResponse;
     }
 
-    // http://localhost:8080/resetPassword
     @PostMapping("/resetPassword")
     public UserAccountResponse resetPassword(@RequestBody UserNewPassword newPassword){
-        User user = this.userService.findByMailAddress(newPassword.getEmail());
+        User user = this.userService.findByMailAddress(newPassword.getMailAddress());
         UserAccountResponse accountResponse = new UserAccountResponse();
         if(user != null){
             if(user.getUserCode().equals(newPassword.getCode())){

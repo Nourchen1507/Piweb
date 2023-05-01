@@ -1,11 +1,10 @@
-package com.example.myproject.entities;
-
+package com.example.myproject.request;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class UserResetPassword {
+public class ResetPassword {
     private String mailAddress;
 
     public String getMailAddress() {
