@@ -2,11 +2,13 @@ package com.example.myproject.Controller;
 
 import com.example.myproject.dto.AppointmentDTO;
 import com.example.myproject.dto.CreateUpdateAppointmentDTO;
+import com.example.myproject.dto.UserAppointmentCountDTO;
 import com.example.myproject.entities.Appointment;
 import com.example.myproject.Service.AppointmentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 @RequiredArgsConstructor
 @RestController
@@ -42,6 +44,30 @@ public class AppointmentController {
     @DeleteMapping("/{id}")
     public void deleteAppointment(@PathVariable Long id) {
         appointmentService.deleteAppointment(id);
+    }
+    @GetMapping("/appointmentsByHelper")
+    public List<UserAppointmentCountDTO> getAppointmentsByHelper(){
+        return appointmentService.getAppointmentsByHelper();
+    }
+    @GetMapping("/appointmentsByOrganization")
+    public List<UserAppointmentCountDTO> getAppointmentsByOrganization(){
+        return appointmentService.getAppointmentsByOrganization();
+    }
+    @GetMapping("/getTotalAppointments")
+    public long getTotalAppointments(){
+        return appointmentService.getTotalAppointments();
+    }
+    @GetMapping("/getDailyAppointments")
+    public long getDailyAppointments(@RequestParam("date") LocalDate date){
+        return appointmentService.getDailyAppointments(date);
+    }
+    @GetMapping("/getWeeklyAppointments")
+    public long getWeeklyAppointments(@RequestParam("date") LocalDate date){
+        return appointmentService.getWeeklyAppointments(date);
+    }
+    @GetMapping("/getMonthlyAppointments")
+    public long getMonthlyAppointments(@RequestParam("date") LocalDate date){
+        return appointmentService.getMonthlyAppointments(date);
     }
 }
 

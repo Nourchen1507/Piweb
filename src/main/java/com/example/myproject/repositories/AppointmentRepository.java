@@ -1,4 +1,4 @@
-package com.example.myproject.Repository;
+package com.example.myproject.repositories;
 
 import com.example.myproject.entities.Appointment;
 import com.example.myproject.entities.User;
@@ -12,4 +12,10 @@ import java.util.List;
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
     List<Appointment> findByOrganizationAndDate(User organization, LocalDateTime date);
     List<Appointment> findByHelperAndDate(User helper, LocalDateTime date);
+
+    long countByDateBetween(LocalDateTime atStartOfDay, LocalDateTime plusDays);
+
+    long countByHelper(User helper);
+
+    long countByOrganization(User organization);
 }

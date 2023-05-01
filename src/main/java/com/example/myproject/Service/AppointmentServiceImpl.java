@@ -2,16 +2,19 @@ package com.example.myproject.Service;
 
 import com.example.myproject.dto.AppointmentDTO;
 import com.example.myproject.dto.CreateUpdateAppointmentDTO;
+import com.example.myproject.dto.UserAppointmentCountDTO;
 import com.example.myproject.entities.Appointment;
 import com.example.myproject.entities.User;
-import com.example.myproject.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import com.example.myproject.Repository.AppointmentRepository;
+import com.example.myproject.repositories.AppointmentRepository;
 
 import javax.mail.MessagingException;
 import javax.persistence.EntityNotFoundException;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,7 +22,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AppointmentServiceImpl implements com.example.myproject.Service.AppointmentService {
     private final AppointmentRepository appointmentRepository;
-    private final com.example.myproject.Repository.UserRepository userRepository;
+    private final com.example.myproject.repositories.UserRepository userRepository;
     private final EmailService emailService;
 
 
@@ -73,10 +76,10 @@ public class AppointmentServiceImpl implements com.example.myproject.Service.App
         appointmentDTO.setDate(appointment.getDate());
         appointmentDTO.setOrganizationId(
                 appointment.getOrganization() != null ?
-                        appointment.getOrganization().getId() : null);
+                        appointment.getOrganization().getIdUser() : null);
         appointmentDTO.setHelperId(
                 appointment.getHelper() != null ?
-                        appointment.getHelper().getId() : null);
+                        appointment.getHelper().getIdUser() : null);
         return appointmentDTO;
     }
 
@@ -137,8 +140,8 @@ public class AppointmentServiceImpl implements com.example.myproject.Service.App
         appointmentDto.setId(appointment.getId());
         appointmentDto.setDate(appointment.getDate());
         appointmentDto.setLieu(appointment.getLieu());
-        appointmentDto.setHelperId(appointment.getHelper().getId());
-        appointmentDto.setOrganizationId(appointment.getOrganization().getId());
+        appointmentDto.setHelperId(appointment.getHelper().getIdUser());
+        appointmentDto.setOrganizationId(appointment.getOrganization().getIdUser());
 
         return appointmentDto;
     }
@@ -158,6 +161,45 @@ public class AppointmentServiceImpl implements com.example.myproject.Service.App
                 .map(this::toAppointmentDTO)
                 .collect(Collectors.toList());
     }
+    public long getTotalAppointments() {
+        return appointmentRepository.count();
+    }
+    public long getDailyAppointments(LocalDate date) {
+        return appointmentRepository.countByDateBetween(date.atStartOfDay(), date.atStartOfDay().plusDays(1));
+    }
+
+    public long getWeeklyAppointments(LocalDate date) {
+        return appointmentRepository.countByDateBetween(date.with(DayOfWeek.MONDAY).atStartOfDay(), date.with(DayOfWeek.SUNDAY).atStartOfDay().plusDays(1));
+    }
+
+    public long getMonthlyAppointments(LocalDate date) {
+        return appointmentRepository.countByDateBetween(date.withDayOfMonth(1).atStartOfDay(), date.withDayOfMonth(date.lengthOfMonth()).atStartOfDay().plusDays(1));
+    }
+    public List<UserAppointmentCountDTO> getAppointmentsByHelper() {
+        return getUserAppointmentCountDTOS("helper");
+    }
+
+
+    public List<UserAppointmentCountDTO> getAppointmentsByOrganization() {
+
+        return getUserAppointmentCountDTOS("organization");
+    }
+    private List<UserAppointmentCountDTO> getUserAppointmentCountDTOS(String roleName) {
+        List<User> users = userRepository.findAllByRole_RoleName(roleName);
+        List<UserAppointmentCountDTO> result = new ArrayList<>();
+        for (User helper : users) {
+            UserAppointmentCountDTO userAppointmentCountDTO = new UserAppointmentCountDTO();
+            userAppointmentCountDTO.setUserId(helper.getIdUser());
+            userAppointmentCountDTO.setNumberOfAppointments(appointmentRepository.countByOrganization(helper));
+            result.add(userAppointmentCountDTO);
+
+        }
+        return result;
+    }
+
+
+
+
 
 }
 
