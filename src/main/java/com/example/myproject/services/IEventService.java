@@ -2,6 +2,7 @@ package com.example.myproject.services;
 
 
 import com.example.myproject.entities.Event;
+import lombok.extern.java.Log;
 
 import java.util.List;
 
@@ -20,6 +21,8 @@ public interface IEventService {
     List<Event> getEventByName(String name);
 
 
+    List<Event> getEventByLieu(String lieu);
+
 
 
 
@@ -29,9 +32,8 @@ public interface IEventService {
 
 
 
-    //List<University> getUniversityByAdress(String adresse);
 
 
-    //List<University> getUniversityByVille(String ville);
+
 
 }

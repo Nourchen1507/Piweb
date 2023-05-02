@@ -3,6 +3,7 @@ package com.example.myproject.services;
 import com.example.myproject.entities.Event;
 import com.example.myproject.entities.Invitation;
 import com.example.myproject.entities.Status;
+import lombok.extern.java.Log;
 
 import java.util.List;
 
@@ -19,4 +20,8 @@ public interface IInvitationService {
     List<Invitation> getAllInvitation();
 
     List<Invitation> getByStatus(Status status);
+
+
+    public  void assignInvitationToEvenment(Long idInvitation, Long idEvenment);
+
 }

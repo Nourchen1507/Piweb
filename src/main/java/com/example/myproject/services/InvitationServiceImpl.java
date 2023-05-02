@@ -68,4 +68,12 @@ public class InvitationServiceImpl implements IInvitationService {
         invitationRepository.findByStatut(status).forEach(invitations::add);
         return invitations;
     }
+
+    @Override
+    public void assignInvitationToEvenment(Long idInvitation, Long idEvenment) {
+        Invitation invitation = invitationRepository.findById(idInvitation).get();
+        Event event= eventRepository.findById(idEvenment).get();
+        invitation.setEvent(event);
+        invitationRepository.save(invitation);
+    }
 }

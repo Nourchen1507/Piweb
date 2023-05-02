@@ -18,7 +18,7 @@ import java.util.List;
 public class EventServiceImpl implements IEventService{
 
 
-    final EventRepository eventRepository;
+    final  EventRepository   eventRepository;
 
     @Autowired
     public EventServiceImpl(EventRepository eventRepository) {
@@ -63,5 +63,16 @@ public class EventServiceImpl implements IEventService{
         List<Event> evenments = new ArrayList<>();
         eventRepository.findByName(name).forEach(evenments::add);
         return evenments;
+
     }
+
+    @Override
+    public List<Event> getEventByLieu(String lieu) {
+        List<Event> evenments = new ArrayList<>();
+        eventRepository.findByLieu(lieu).forEach(evenments::add);
+        return evenments;
+
+    }
+
+
 }

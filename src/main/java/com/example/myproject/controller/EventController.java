@@ -13,7 +13,10 @@ import com.example.myproject.entities.Event;
 import java.util.List;
 
 
+
+
 @RestController
+@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 @Component
 @RequestMapping("/event")
 public class EventController {
@@ -47,6 +50,15 @@ public class EventController {
         return iEventService.getAllEvent();
     }
 
+    @GetMapping ("/allName/{name}")
+    List<Event> getEventbyName(@PathVariable  String name){
+        return iEventService.getEventByName(name);
+    }
+
+    @GetMapping ("/lieus/{lieu}")
+    List<Event> getEventByLieu(@PathVariable  String lieu){
+        return iEventService.getEventByLieu(lieu);
+    }
 
 
 }
