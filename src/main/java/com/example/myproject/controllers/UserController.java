@@ -19,6 +19,7 @@ import javax.annotation.PostConstruct;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @Slf4j
@@ -128,6 +129,7 @@ public class UserController {
         return ResponseEntity.ok().build();
     }
 
+    
 
 
     @PutMapping("/VerifUser/{userName}")
@@ -189,7 +191,11 @@ public class UserController {
         return userService.resetPasswordSMS(newPassword);
     }
 
-
+    @PutMapping("/changepassword/{id}")
+    public ResponseType changePassword(@PathVariable Long id, @RequestBody ChangePasswordRequest password) {
+        Integer code = userService.changePassword(id, password);
+        return new ResponseType(code);
+    }
 
 
 

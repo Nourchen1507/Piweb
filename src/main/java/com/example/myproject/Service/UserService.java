@@ -286,6 +286,20 @@ logger.info(user.getRole().getRoleName());
     }
 
 
-
+    public Integer changePassword(Long id, ChangePasswordRequest password) {
+        User user = userDao.findByIdUser(id);
+        if (user == null) {
+            return 404;
+        }
+        logger.info(password.getNewpassword());
+        if(passwordEncoder.matches(password.getOldpassword(), user.getPassword())){
+            user.setPassword(passwordEncoder.encode(password.getNewpassword()));
+            userDao.save(user);
+            return 200;
+        }
+        else {
+            return 400;
+        }
+    }
 
 }

@@ -37,11 +37,8 @@ public class User {
 	private String userPhone;
 	@Column(name = "imageProfile",columnDefinition = "longtext")
 	private String imageProfile;
-	private Date lockTime;
 	private String location;
 	private String password;
-	private LocalDateTime unavailability;
-	private Boolean isDisabled;
 	private String certificate;
 	private String verificationToken;
 	private boolean verified;
@@ -102,6 +99,7 @@ public class User {
 	public String getUserPhone() {
 		return userPhone;
 	}
+
 
 	public void setUserPhone(String userPhone) {
 		this.userPhone = userPhone;

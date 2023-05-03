@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    User findByIdUser(Long id);
+    User findByIdUser(Long idUser);
     User findByUserName(String userName);
     User findByVerificationToken(String Token);
 
