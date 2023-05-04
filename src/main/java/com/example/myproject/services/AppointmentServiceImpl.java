@@ -2,9 +2,11 @@ package com.example.myproject.services;
 
 import com.example.myproject.dto.AppointmentDTO;
 import com.example.myproject.dto.CreateUpdateAppointmentDTO;
+import com.example.myproject.entities.Alarm;
 import com.example.myproject.entities.Appointment;
 import com.example.myproject.entities.User;
 import com.example.myproject.repository.AppointmentRepository;
+import com.example.myproject.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,10 @@ import java.util.stream.Collectors;
 public class AppointmentServiceImpl implements AppointmentService {
     private final AppointmentRepository appointmentRepository;
     private final UserRepository userRepository;
+
+    private final AlarmServiceImpl alarmService;
+
+    private final UserRepository userRepo;
 
 
 
@@ -39,11 +45,21 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public AppointmentDTO createAppointment(CreateUpdateAppointmentDTO createUpdateAppointmentDTO) {
+        System.out.println("dtooooooooooooo"+createUpdateAppointmentDTO);
+
         Appointment appointment = new Appointment();
         appointment.setLieu(createUpdateAppointmentDTO.getLieu());
         appointment.setDate(createUpdateAppointmentDTO.getDate());
         appointment.setHelper(loadUser(createUpdateAppointmentDTO.getHelperId()));
-        appointment.setOrganization(loadUser(createUpdateAppointmentDTO.getOrganizationId()));
+      //  appointment.setOrganization(loadUser(createUpdateAppointmentDTO.getOrganizationId()));
+        appointment.setHelper(userRepo.findById(createUpdateAppointmentDTO.getHelperId()).get());
+       if(createUpdateAppointmentDTO.getAlarmActivated()){
+           Alarm alarm = alarmService.addAlarm(new Alarm());
+           appointment.setAlarm(alarm);
+
+       }
+
+        System.out.println("appointmeeeeeeeeeetn"+appointment);
         return toAppointmentDTO( appointmentRepository.save(appointment));
     }
 
@@ -78,6 +94,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     private User loadUser(Long id) {
+        System.out.println("iddddddddddddddddd"+id);
 
         return userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User with id " + id + " not found"));
 

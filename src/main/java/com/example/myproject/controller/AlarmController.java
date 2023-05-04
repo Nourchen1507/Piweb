@@ -19,8 +19,6 @@ import java.util.Optional;
 @RequestMapping("/alarm")
 public class AlarmController  {
 
-
-
     @Autowired
     private IAlarmService iAlarmService;
 
@@ -62,5 +60,7 @@ public class AlarmController  {
     List<Alarm> getAllAlarm(){
         return  iAlarmService.getAllAlarm();
     }
+
+
 
 }

@@ -7,9 +7,12 @@ import com.example.myproject.repository.AppointmentRepository;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.*;
@@ -19,6 +22,8 @@ import org.springframework.scheduling.annotation.Scheduled;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Service("alarm")
+@EnableScheduling
+@Configuration
 public class AlarmServiceImpl implements IAlarmService{
 
 
@@ -31,9 +36,9 @@ public class AlarmServiceImpl implements IAlarmService{
 
 
     @Override
-    public void addAlarm(Alarm alarm) {
+    public Alarm addAlarm(Alarm alarm) {
 
-        alarmRepository.save(alarm);
+       return alarmRepository.save(alarm);
 
 
     }
@@ -51,7 +56,6 @@ public class AlarmServiceImpl implements IAlarmService{
     @Override
     public void removeAlarm(Long idAlarm) {
         alarmRepository.deleteById(idAlarm);
-
 
     }
 
@@ -78,18 +82,19 @@ public class AlarmServiceImpl implements IAlarmService{
         @Autowired
         private AppointmentRepository appointmentRepository;
 
-        @Scheduled(cron = "0 0 * * *") // exécute la méthode tous les jours à minuit
+        @Scheduled(cron = "* 60 * * * *") // exécute la méthode tous les jours à minuit
         public void sendReminderEmails() {
-            List<Appointment> appointementList = appointmentRepository.findAppointmentByDateBetween(
-                    LocalDateTime.now(),
-                    LocalDateTime.now().plusDays(1)
-            );
-            for (Appointment appointment : appointementList) {
-                String recipientEmail = appointment.getHelper().getMailAddress();
-                String subject = "Rappel d'appointement";
-                String body = "Bonjour,\n\nVous avez un appointement prévu demain à " + appointment.getDate() + ".\n\nCordialement,\nL'équipe de notre entreprise";
-                sendEmail(recipientEmail, subject, body);
+            List<Appointment> appointments = appointmentRepository.findAll();
+            for (Appointment appointment:appointments
+                 ) {
+                if(appointment.getDate().toLocalDate().equals(LocalDate.now())){
+                    sendEmail(appointment.getHelper().getMailAddress(), "khedmt hadhra si zebi", "hellooo");
+                    alarmRepository.delete(appointment.getAlarm());
+                }
             }
+            String subject = "Rappel d'appointement";
+            String body = "Bonjour";
+          //  sendEmail("kefiskander99@gmail.com", subject, body);
         }
 
 

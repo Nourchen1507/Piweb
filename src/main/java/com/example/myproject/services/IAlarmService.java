@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IAlarmService  {
 
-    void addAlarm(Alarm alarm);
+    Alarm addAlarm(Alarm alarm);
 
     Alarm updateAlarm(Long idAlarm, Alarm alarm);
 
