@@ -2,19 +2,20 @@ package com.example.myproject.services;
 
 
 import com.example.myproject.entities.Event;
+import com.example.myproject.entities.Invitation;
 import lombok.extern.java.Log;
 
 import java.util.List;
 
 public interface IEventService {
 
-    void addEvent(Event event);
+    int addEvent(Event event);
 
-   Event updateEvent(Long idEvent, Event event);
+   Event updateEvent(int idEvent, Event event);
 
-    void removeEvent(Long idEvent);
+    void removeEvent(int idEvent);
 
-    List<Event> retrieveEvent(Long idEvent);
+    List<Event> retrieveEvent(int idEvent);
 
    List<Event> getAllEvent();
 
@@ -23,12 +24,9 @@ public interface IEventService {
 
     List<Event> getEventByLieu(String lieu);
 
+    public void affecterInvitToEvent(Invitation ie, String name);
 
 
-
-    // UniversityDto addUniversityDto(UniversityDto universityDto);
-
-   // List<UniversityDto> retrieveAllUniversityDto();
 
 
 

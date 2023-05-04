@@ -36,7 +36,7 @@ public class InvitationServiceImpl implements IInvitationService {
     }
 
     @Override
-    public Invitation updateInvitation(Long idInvitation, Invitation invitation) {
+    public Invitation updateInvitation(int idInvitation, Invitation invitation) {
         List<Invitation> newInvitation =  invitationRepository.findByIdInvitation(idInvitation);
         if (invitation.getName()!= null)
             newInvitation.get(0).setName(invitation.getName());
@@ -44,13 +44,13 @@ public class InvitationServiceImpl implements IInvitationService {
     }
 
     @Override
-    public void removeInvitation(Long idInvitation) {
+    public void removeInvitation(int idInvitation) {
         invitationRepository.deleteById(idInvitation);
 
     }
 
     @Override
-    public List<Invitation> retrieveInvitation(Long idInvitation) {
+    public List<Invitation> retrieveInvitation(int idInvitation) {
         return invitationRepository.findByIdInvitation(idInvitation);
     }
 
@@ -70,10 +70,19 @@ public class InvitationServiceImpl implements IInvitationService {
     }
 
     @Override
-    public void assignInvitationToEvenment(Long idInvitation, Long idEvenment) {
+    public void assignInvitationToEvenment(int idInvitation, int idEvenment) {
         Invitation invitation = invitationRepository.findById(idInvitation).get();
         Event event= eventRepository.findById(idEvenment).get();
         invitation.setEvent(event);
         invitationRepository.save(invitation);
     }
+
+
+
+    @Override
+    public int affecterInvitToEvent(int i, int idi) {
+        return invitationRepository.affecterInvitationToEvent(i,idi);
+    }
+
+
 }

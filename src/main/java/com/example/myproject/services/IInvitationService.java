@@ -11,17 +11,18 @@ public interface IInvitationService {
 
     void addInvitation( Invitation invitation);
 
-    Invitation updateInvitation(Long idInvitation, Invitation invitation);
+    Invitation updateInvitation(int idInvitation, Invitation invitation);
 
-    void removeInvitation(Long idInvitation);
+    void removeInvitation(int idInvitation);
 
-    List<Invitation> retrieveInvitation(Long idInvitation);
+    List<Invitation> retrieveInvitation(int idInvitation);
 
     List<Invitation> getAllInvitation();
 
     List<Invitation> getByStatus(Status status);
 
+    public  void assignInvitationToEvenment(int idInvitation, int idEvenment);
 
-    public  void assignInvitationToEvenment(Long idInvitation, Long idEvenment);
+    public int affecterInvitToEvent(int i,int ide);
 
 }

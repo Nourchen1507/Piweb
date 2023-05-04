@@ -5,31 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f00edae1-41e2-4d54-9d8e-b549a7c569cc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/myproject/controller/AlarmController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/myproject/controller/PDFController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/myproject/repository/AlarmRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/myproject/services/AlarmServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/myproject/services/IAlarmService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jpa-buddy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pi.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myproject/controller/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myproject/controller/EventController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myproject/controller/InvitationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myproject/controller/InvitationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myproject/entities/Alarm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myproject/entities/Alarm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myproject/entities/Don.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myproject/entities/Don.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myproject/entities/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myproject/entities/Event.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myproject/entities/Invitation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myproject/entities/Invitation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myproject/repository/EventRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myproject/repository/EventRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myproject/repository/IInvitationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myproject/repository/IInvitationRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myproject/services/EventServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myproject/services/EventServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myproject/services/IEventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myproject/services/IEventService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myproject/services/IInvitationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myproject/services/IInvitationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myproject/services/InvitationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myproject/services/InvitationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/myproject/controller/EventController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/myproject/controller/EventController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/myproject/controller/InvitationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/myproject/controller/InvitationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/myproject/entities/Alarm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/myproject/entities/Alarm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/myproject/entities/Don.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/myproject/entities/Don.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/myproject/entities/Event$EventBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/myproject/entities/Event$EventBuilder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/myproject/entities/Event.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/myproject/entities/Event.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/myproject/entities/Invitation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/myproject/entities/Invitation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/myproject/repository/IInvitationRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/myproject/repository/IInvitationRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/myproject/services/IInvitationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/myproject/services/IInvitationService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/myproject/services/InvitationServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/myproject/services/InvitationServiceImpl.class" afterDir="false" />
     </list>
@@ -90,11 +83,12 @@
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../4sae6-bugsmashers-bugsmashers" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="com.maddyhome.idea.vim.ui.VimEmulationConfigurable" />
   </component>
   <component name="RunManager">
@@ -125,6 +119,16 @@
       <workItem from="1682029429912" duration="1247000" />
       <workItem from="1682031955363" duration="6163000" />
       <workItem from="1682272716445" duration="107000" />
+      <workItem from="1683042176881" duration="616000" />
+      <workItem from="1683049394518" duration="555000" />
+      <workItem from="1683051263312" duration="1081000" />
+      <workItem from="1683054183428" duration="6430000" />
+      <workItem from="1683069936324" duration="900000" />
+      <workItem from="1683073623867" duration="750000" />
+      <workItem from="1683078594117" duration="1498000" />
+      <workItem from="1683085130915" duration="5292000" />
+      <workItem from="1683137597891" duration="4851000" />
+      <workItem from="1683150398831" duration="10528000" />
     </task>
     <servers />
   </component>

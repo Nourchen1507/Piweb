@@ -2,9 +2,12 @@ package com.example.myproject.services;
 
 
 import com.example.myproject.entities.Event;
+import com.example.myproject.entities.Invitation;
 import com.example.myproject.repository.EventRepository;
+import com.example.myproject.repository.IInvitationRepository;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +17,16 @@ import java.util.List;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Service("evenment")
+@Slf4j
 
 public class EventServiceImpl implements IEventService{
 
+    @Autowired
+      EventRepository   eventRepository;
 
-    final  EventRepository   eventRepository;
+    @Autowired
+    IInvitationRepository invitationRepository;
+
 
     @Autowired
     public EventServiceImpl(EventRepository eventRepository) {
@@ -26,13 +34,15 @@ public class EventServiceImpl implements IEventService{
     }
 
     @Override
-    public void addEvent(Event event) {
+    public int addEvent(Event event) {
         eventRepository.save(event);
+        log.info(event+"Ajouter avec succee ");
+        return event.getIdEvent();
 
     }
 
     @Override
-    public Event updateEvent(Long idEvent, Event event) {
+    public Event updateEvent(int idEvent, Event event) {
         List<Event> newEvent = eventRepository.findByIdEvent(idEvent);
         if (event.getName()!= null)
             newEvent.get(0).setName(event.getName());
@@ -41,13 +51,13 @@ public class EventServiceImpl implements IEventService{
     }
 
     @Override
-    public void removeEvent(Long idEvent) {
+    public void removeEvent(int idEvent) {
         eventRepository.deleteById(idEvent);
 
     }
 
     @Override
-    public List<Event> retrieveEvent(Long idEvent) {
+    public List<Event> retrieveEvent(int idEvent) {
         return eventRepository.findByIdEvent(idEvent);
     }
 
@@ -74,5 +84,15 @@ public class EventServiceImpl implements IEventService{
 
     }
 
-
+    @Override
+    public void affecterInvitToEvent(Invitation ie, String name) {
+        Event e = eventRepository.retrieveEventByName(name);
+        Integer total = eventRepository.countI(e.getIdEvent());
+        if (total < 200) {
+            ie.setEvent(e);
+            invitationRepository.save(ie);
+        }else{
+            log.info("event "+e.getName()+"a atteint la limit  !");
+        }
+    }
 }

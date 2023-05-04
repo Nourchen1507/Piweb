@@ -22,6 +22,7 @@ import java.util.List;
 
 @RestController
 @Component
+@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 @RequestMapping("/invitation")
 
 public class InvitationController {
@@ -35,18 +36,18 @@ public class InvitationController {
     }
 
     @DeleteMapping("/delete/{id}")
-    void deleteInvitation(@PathVariable("id") Long idInvitation) {
+    void deleteInvitation(@PathVariable("id") int idInvitation) {
         iInvitationService.removeInvitation(idInvitation);
     }
 
 
     @PutMapping("/update/{id}")
-    Invitation updateInvitation(@PathVariable("id") Long idInvitation, @RequestBody Invitation invitation) {
+    Invitation updateInvitation(@PathVariable("id") int idInvitation, @RequestBody Invitation invitation) {
         return iInvitationService.updateInvitation(idInvitation, invitation);
     }
 
     @GetMapping("/get/{id}")
-    List<Invitation> getInvitation(@PathVariable("id") Long idInvitation) {
+    List<Invitation> getInvitation(@PathVariable("id") int idInvitation) {
         return iInvitationService.retrieveInvitation(idInvitation);
     }
 
@@ -57,11 +58,12 @@ public class InvitationController {
 
 
     @PutMapping("affect/{idi}/{ide}")
-    public void affect(@PathVariable("idi") Long idInvitation, @PathVariable("ide") Long idEvenment) {
+    public void affect(@PathVariable("idi") int idInvitation, @PathVariable("ide") int idEvenment) {
 
         iInvitationService.assignInvitationToEvenment(idInvitation,idEvenment);
     }
     @GetMapping("/pdf/invitations")
+
     public void generatePdf(HttpServletResponse response) throws DocumentException, IOException {
 
         response.setContentType("application/pdf");
@@ -81,5 +83,14 @@ public class InvitationController {
     @GetMapping("/status")
     public ResponseEntity<Status[]> getStatus() {
         return ResponseEntity.ok(Status.values());
+
     }
+
+    @GetMapping("addInvitToEvent/{idevent}/{idinvitation}")
+    public int addinvitToevent(@PathVariable("idevent") int idevent,@PathVariable("idinvitation") int idinvitation)
+    {
+        return iInvitationService.affecterInvitToEvent(idevent,idinvitation);
+    }
+
+
 }
