@@ -39,6 +39,7 @@ public class User {
 	private String imageProfile;
 	private String location;
 	private String password;
+	@Column(name = "certificate",columnDefinition = "longtext")
 	private String certificate;
 	private String verificationToken;
 	private boolean verified;

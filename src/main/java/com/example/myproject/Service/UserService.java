@@ -143,8 +143,8 @@ logger.info(user.getRole().getRoleName());
         user2.setMailAddress(user.getMailAddress());
         user2.setImageProfile(user.getImageProfile());
         user2.setUserPhone(user.getUserPhone());
-        user2.setCertificate(user.getCertificate());
         user2.setLocation(user.getLocation());
+        user2.setCertificate(user.getCertificate());
         user2.setUserName(user.getUserName());
         return userDao.save(user2);
     }
@@ -300,6 +300,10 @@ logger.info(user.getRole().getRoleName());
         else {
             return 400;
         }
+    }
+
+    public List < User > findAll() {
+        return userDao.findAll();
     }
 
 }
