@@ -1,12 +1,12 @@
 package com.example.myproject.services;
 
-import com.example.myproject.dto.AppointmentDTO;
+import com.example.myproject.dto.AppointmentDTO; 
 import com.example.myproject.dto.CreateUpdateAppointmentDTO;
 import com.example.myproject.entities.Alarm;
 import com.example.myproject.entities.Appointment;
 import com.example.myproject.entities.User;
+import com.example.myproject.repositories.UserRepository;
 import com.example.myproject.repository.AppointmentRepository;
-import com.example.myproject.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

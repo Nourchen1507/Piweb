@@ -82,7 +82,7 @@ public class AlarmServiceImpl implements IAlarmService{
         @Autowired
         private AppointmentRepository appointmentRepository;
 
-        @Scheduled(cron = "* 60 * * * *") // exécute la méthode tous les jours à minuit
+    	@Scheduled(cron = "0 * * * * *") // every midnight
         public void sendReminderEmails() {
             List<Appointment> appointments = appointmentRepository.findAll();
             for (Appointment appointment:appointments
