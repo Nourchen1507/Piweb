@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recherche Post</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<!--<body>-->
+<!--<h1>Recherche post </h1>-->
+<!--<input type="text" id="nom" placeholder="Saisissez le nom de votre post ">-->
+<!--<ul id="results"></ul>-->
+<!--<script>-->
+<!--  $(document).ready(function() {-->
+<!--    $('#nom').on('input', function() {-->
+<!--      var inputVal = $(this).val();-->
+<!--      if (inputVal.length >= 1) {-->
+<!--        $.ajax({-->
+<!--          url: '/postss',-->
+<!--          data: { nom: inputVal },-->
+<!--          cache: false,-->
+<!--          success: function(data) {-->
+<!--            $('#results').empty();-->
+<!--            $.each(data, function(index, post) {-->
+<!--              var item = $('<li>').text(post.nom);-->
+<!--              $('#results').append(item);-->
+<!--            });-->
+<!--          }-->
+<!--        });-->
+<!--      }-->
+<!--    });-->
+<!--  });-->
+<!--</script>-->
+<!--</body>-->
+
+<body>
+<h1>Recherche post </h1>
+<input type="text" id="nom" placeholder="Saisissez le nom de votre post">
+<ul id="results"></ul>
+<script>
+  $(document).ready(function() {
+    // Send AJAX request to fetch all posts when page loads
+    $.ajax({
+      url: '/postss',
+      success: function(data) {
+        // Loop through each post and append to the results list
+        $.each(data, function(index, post) {
+          var item = $('<li>').text(post.nom);
+          $('#results').append(item);
+        });
+      }
+    });
+
+    // Listen for click outside search input or Escape key press to clear search input and results list
+    $(document).on('click keyup', function(event) {
+      if (event.type === 'click' && !$(event.target).is('#nom')) {
+        clearSearchInputAndResultsList();
+      } else if (event.type === 'keyup' && event.key === 'Escape') {
+        clearSearchInputAndResultsList();
+      }
+    });
+
+    $('#nom').on('input', function() {
+      var inputVal = $(this).val();
+      if (inputVal.length >= 1) {
+        $.ajax({
+          url: '/postss',
+          data: { nom: inputVal },
+          cache: false,
+          success: function(data) {
+            $('#results').empty();
+            $.each(data, function(index, post) {
+              var item = $('<li>').text(post.nom);
+              $('#results').append(item);
+            });
+          }
+        });
+      } else {
+        clearSearchInputAndResultsList();
+        // Send AJAX request to fetch all posts when search input is cleared
+        $.ajax({
+          url: '/postss',
+          success: function(data) {
+            // Loop through each post and append to the results list
+            $.each(data, function(index, post) {
+              var item = $('<li>').text(post.nom);
+              $('#results').append(item);
+            });
+          }
+        });
+      }
+    });
+
+    function clearSearchInputAndResultsList() {
+      $('#nom').val('');
+      $('#results').empty();
+    }
+  });
+</script>
+</body>
+
+</html>
