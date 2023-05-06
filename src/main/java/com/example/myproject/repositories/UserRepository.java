@@ -1,6 +1,7 @@
 package com.example.myproject.repositories;
 
 import com.example.myproject.entities.User;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -11,7 +12,7 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    User findByIdUser(Long idUser);
+    User findByIdUser(Long id);
     User findByUserName(String userName);
     User findByVerificationToken(String Token);
 
@@ -31,5 +32,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     public String getPasswordByEmail(String mailAddress);
 
     public User findByUserPhone(String phone);
+    List<User> findAllByRole_RoleNameOrderByUserName(String roleName);
 
 }

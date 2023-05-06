@@ -61,7 +61,7 @@ public class UserService {
         roleDao.save(adminRole);
 
         Role OrganisationRole = new Role();
-        OrganisationRole.setRoleName("Organisation");
+        OrganisationRole.setRoleName("organisation");
 
         roleDao.save(OrganisationRole);
 

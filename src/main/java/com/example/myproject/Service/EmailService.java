@@ -16,11 +16,9 @@ import javax.mail.internet.MimeMessage;
 
 @Service
 public class EmailService implements IUserEmailRepository {
-
-
-    @Autowired UserService userservice;
     @Autowired
     private JavaMailSender userMailSender;
+
     @Autowired
     private VerificationTokenService verificationTokenService;
 

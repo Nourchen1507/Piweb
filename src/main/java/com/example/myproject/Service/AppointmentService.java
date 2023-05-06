@@ -2,7 +2,9 @@ package com.example.myproject.Service;
 
 import com.example.myproject.dto.AppointmentDTO;
 import com.example.myproject.dto.CreateUpdateAppointmentDTO;
+import com.example.myproject.dto.MonthlyScheduledAppointmentCountDTO;
 import com.example.myproject.dto.UserAppointmentCountDTO;
+import com.example.myproject.dto.UserDTO;
 import com.example.myproject.entities.User;
 
 import java.time.LocalDate;
@@ -11,6 +13,7 @@ import java.util.List;
 
 public interface AppointmentService {
     List<AppointmentDTO> getAllAppointments();
+    List<AppointmentDTO> getAllAppointmentsForHelper(Long id);
 
     AppointmentDTO getAppointmentById(Long id) ;
 
@@ -31,4 +34,6 @@ public interface AppointmentService {
     long getMonthlyAppointments(LocalDate date);
     List<UserAppointmentCountDTO> getAppointmentsByHelper();
     List<UserAppointmentCountDTO> getAppointmentsByOrganization();
+    List<MonthlyScheduledAppointmentCountDTO> getScheduledAppointmentsCount();
+    List<UserDTO> getAllOrganizations();
 }
