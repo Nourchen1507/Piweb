@@ -1,5 +1,7 @@
 package com.example.myproject.entities;
 
+import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.LinkedHashSet;
@@ -17,24 +19,35 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 @Entity
-@AllArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Table(name = "event")
-public class Event {
+public class Event implements Serializable {
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private Long id;
-	private LocalDateTime date;
+
+
+	private Long idEvent;
+	@NonNull
+	private String name;
+	@NonNull
+	private LocalDate date;
+	@NonNull
 	private String lieu;
+	@NonNull
 	private String description;
 	
+
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	@JsonIgnore
@@ -42,7 +55,9 @@ public class Event {
 	
 	@OneToMany(mappedBy = "event", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private Set<Invitation> invitations = new LinkedHashSet<>();
-	
-	
+
+
+
+
 
 }

@@ -1,6 +1,9 @@
 package com.example.myproject.entities;
 
 import java.time.LocalDateTime; 
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +16,7 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import lombok.Setter;
 
 @Entity
 @Getter 
@@ -20,7 +24,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class Reclamation {
-	
+
 
 	
 	

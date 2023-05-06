@@ -1,5 +1,6 @@
 package com.example.myproject.entities;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,11 +22,12 @@ import lombok.ToString;
 
 @Entity
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Table(name = "user") 
-@NoArgsConstructor
 public class User {
+
 
 	@Id
 	private Long id;
@@ -58,7 +60,7 @@ public class User {
 	private Set<Role> role;
 
 
-	
+
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private List<Post> posts = new ArrayList<>();
@@ -79,8 +81,6 @@ public class User {
 	
 	@OneToMany(mappedBy = "organization", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private List<Appointment> organizationAppointments = new ArrayList<>();
-
-
 
 
 }
