@@ -7,14 +7,16 @@ import com.example.myproject.repository.EventRepository;
 import com.example.myproject.repository.IInvitationRepository;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Service("invitation")
+@Slf4j
+
 
 public class InvitationServiceImpl implements IInvitationService {
 
@@ -36,24 +38,17 @@ public class InvitationServiceImpl implements IInvitationService {
     }
 
     @Override
-    public Invitation updateInvitation(int idInvitation, Invitation invitation) {
-        List<Invitation> newInvitation =  invitationRepository.findByIdInvitation(idInvitation);
-        if (invitation.getName()!= null)
-            newInvitation.get(0).setName(invitation.getName());
-        return  invitationRepository.save(newInvitation.get(0));
-    }
-
-    @Override
     public void removeInvitation(int idInvitation) {
         invitationRepository.deleteById(idInvitation);
 
     }
-
     @Override
-    public List<Invitation> retrieveInvitation(int idInvitation) {
-        return invitationRepository.findByIdInvitation(idInvitation);
+    public Invitation mettreAjourInvitation(int id) {
+        Invitation i = invitationRepository.findById(id).get();
+        invitationRepository.save(i);
+        log.info("invitation "+i.getName()+" modifié avec success");
+        return (i);
     }
-
 
     @Override
     public List<Invitation> getAllInvitation() {
@@ -77,11 +72,23 @@ public class InvitationServiceImpl implements IInvitationService {
         invitationRepository.save(invitation);
     }
 
+    @Override
+    public int affecterInvitationToEvenment(int i,int idi) {
+        return invitationRepository.affecterInvitationToEvenment(i,idi);
+    }
+
+    public Optional<Invitation> afficherInvitation(int id) {
+
+        Invitation invitation = invitationRepository.findById(id).orElseThrow(() -> new RuntimeException(
+                        "club with Id: " + id + " does not exist")
+        );
+        return invitationRepository.findById(id);
+    }
 
 
     @Override
-    public int affecterInvitToEvent(int i, int idi) {
-        return invitationRepository.affecterInvitationToEvent(i,idi);
+    public Invitation retrieveInvitation(Integer idInvitation) {
+        return invitationRepository.findById(idInvitation).get();
     }
 
 

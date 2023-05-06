@@ -1,24 +1,31 @@
 package com.example.myproject.controller;
 
+import com.example.myproject.entities.Event;
 import com.example.myproject.entities.Invitation;
 import com.example.myproject.entities.Status;
+import com.example.myproject.repository.IInvitationRepository;
 import com.example.myproject.services.EventServiceImpl;
 import com.example.myproject.services.IEventService;
 import com.example.myproject.services.IInvitationService;
 import com.itextpdf.text.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @RestController
 @Component
@@ -29,6 +36,10 @@ public class InvitationController {
 
     @Autowired
     private IInvitationService iInvitationService;
+    @Autowired
+    IInvitationRepository iInvitationRepository;
+
+
 
     @PostMapping("/add")
     void addInvitation(@RequestBody Invitation invitation) {
@@ -41,19 +52,25 @@ public class InvitationController {
     }
 
 
-    @PutMapping("/update/{id}")
-    Invitation updateInvitation(@PathVariable("id") int idInvitation, @RequestBody Invitation invitation) {
-        return iInvitationService.updateInvitation(idInvitation, invitation);
-    }
 
-    @GetMapping("/get/{id}")
-    List<Invitation> getInvitation(@PathVariable("id") int idInvitation) {
-        return iInvitationService.retrieveInvitation(idInvitation);
-    }
 
     @GetMapping("/all")
     List<Invitation> getAllInvitation() {
         return iInvitationService.getAllInvitation();
+    }
+
+
+
+    @PutMapping("update/{id}")
+    public ResponseEntity<?> update(@Valid @RequestBody Invitation invitation, @PathVariable Integer id) {
+        try {
+            Optional<Invitation> existClub = iInvitationService.afficherInvitation(id);
+            invitation.setIdInvitation(id);
+            iInvitationService.addInvitation(invitation);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
 
@@ -86,11 +103,19 @@ public class InvitationController {
 
     }
 
-    @GetMapping("addInvitToEvent/{idevent}/{idinvitation}")
-    public int addinvitToevent(@PathVariable("idevent") int idevent,@PathVariable("idinvitation") int idinvitation)
-    {
-        return iInvitationService.affecterInvitToEvent(idevent,idinvitation);
+
+
+    @GetMapping("addinvitationToEvent/{idevent}/{idinvitation}")
+    public int addinvitationToEvent(@PathVariable("idevent") int idevent,@PathVariable("idinvitation") int idi) {;
+
+        return iInvitationService.affecterInvitationToEvenment(idevent,idi);
     }
 
+
+    @GetMapping("/DisplayById/{id}")
+    public Invitation displayInvitationByID(@PathVariable("id") int id) {
+
+        return iInvitationService.retrieveInvitation(id);
+    }
 
 }

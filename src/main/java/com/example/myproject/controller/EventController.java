@@ -72,6 +72,6 @@ public class EventController {
     public void assignInvit(@PathVariable("idi") int idinvitation,@PathVariable("name") String name)
             throws Exception {
         Invitation invitation = invitationRepository.findById(idinvitation).get();
-        iEventService.affecterInvitToEvent(invitation,name);
+        iEventService.affecterInvitationToEvenment(invitation,name);
     }
 }

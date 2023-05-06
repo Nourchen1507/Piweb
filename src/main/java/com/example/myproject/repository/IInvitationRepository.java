@@ -15,11 +15,11 @@ import java.util.List;
 @Repository
 public interface IInvitationRepository extends JpaRepository<Invitation,Integer> {
 
-    List<Invitation> findByIdInvitation(int idInvitation);
+
     @Modifying
     @Transactional
-    @Query("update  Invitation as c set c.event.idEvent= :idevent where c.idInvitation= :idinvitation")
-    int affecterInvitationToEvent(@Param("idevent") int i, @Param("idinvitation") int j );
+    @Query("update  Invitation as i set i.event.idEvent= :idevent where i.idInvitation= :idinvitation")
+    int affecterInvitationToEvenment(@Param("idevent") int i, @Param("idinvitation") int j );
 
     List<Invitation>  findByStatut(Status status);
 

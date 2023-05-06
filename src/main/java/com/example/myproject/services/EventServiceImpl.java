@@ -85,7 +85,7 @@ public class EventServiceImpl implements IEventService{
     }
 
     @Override
-    public void affecterInvitToEvent(Invitation ie, String name) {
+    public void affecterInvitationToEvenment(Invitation ie, String name) {
         Event e = eventRepository.retrieveEventByName(name);
         Integer total = eventRepository.countI(e.getIdEvent());
         if (total < 200) {

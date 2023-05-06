@@ -24,7 +24,7 @@ public interface IEventService {
 
     List<Event> getEventByLieu(String lieu);
 
-    public void affecterInvitToEvent(Invitation ie, String name);
+    public void affecterInvitationToEvenment(Invitation ie, String name);
 
 
 

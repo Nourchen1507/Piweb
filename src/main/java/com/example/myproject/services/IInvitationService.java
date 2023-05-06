@@ -6,23 +6,29 @@ import com.example.myproject.entities.Status;
 import lombok.extern.java.Log;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IInvitationService {
 
     void addInvitation( Invitation invitation);
 
-    Invitation updateInvitation(int idInvitation, Invitation invitation);
+    public Invitation mettreAjourInvitation(int id);
 
     void removeInvitation(int idInvitation);
-
-    List<Invitation> retrieveInvitation(int idInvitation);
 
     List<Invitation> getAllInvitation();
 
     List<Invitation> getByStatus(Status status);
 
-    public  void assignInvitationToEvenment(int idInvitation, int idEvenment);
+     void assignInvitationToEvenment(int idInvitation, int idEvenment);
 
-    public int affecterInvitToEvent(int i,int ide);
+    public Optional<Invitation> afficherInvitation(int id);
+
+
+    int affecterInvitationToEvenment(int i,int idi);
+
+
+    Invitation retrieveInvitation(Integer idInvitation);
+
 
 }

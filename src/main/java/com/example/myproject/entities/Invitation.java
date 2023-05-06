@@ -20,11 +20,13 @@ public class Invitation implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@Column(name="idInvitation")
 	private int idInvitation;
-	private String name;
-	private String helperInvited;
+
 	@Temporal (TemporalType.DATE)
 	private Date dateInvitation;
+
+	private String helperInvited;
 	private Boolean archive;
 	@Enumerated(EnumType.STRING)
 	Status statut;
