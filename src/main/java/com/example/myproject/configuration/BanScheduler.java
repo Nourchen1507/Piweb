@@ -1,22 +1,18 @@
 package com.example.myproject.configuration;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.LocalDate;  
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.mail.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
-import com.example.myproject.Repository.UserRepository;
 import com.example.myproject.Service.ReclamationService;
 import com.example.myproject.entities.User;
+import com.example.myproject.repositories.UserRepository;
 
 
 @Configuration
@@ -25,15 +21,15 @@ public class BanScheduler {
 	
 	
 	@Autowired
-	private UserRepository userrepo;
+	private UserRepository userrepo; 
 	@Autowired
 	private ReclamationService reclamationService;
 
 	
 
-	    @Scheduled(cron = "0 0 0 * * ?") // every midnight
+	@Scheduled(cron = "0 * * * * *") // every midnight
 	    public void sendEmail() {
-	    	
+	    	System.out.println("scheduling");
 	    	//preparing unban email body
 	    	String body= 
     				"<html><head><style>" +

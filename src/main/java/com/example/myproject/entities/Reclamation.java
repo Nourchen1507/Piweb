@@ -12,11 +12,13 @@ import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Getter 
 @Table(name = "reclamation")
 @NoArgsConstructor
+@ToString
 public class Reclamation {
 	
 
@@ -38,15 +40,18 @@ public class Reclamation {
 	
 	private String raison;
 	
-	private Long blockedBy;
+	private Boolean isBlock;
 	
 	private LocalDateTime createdOn;
 	
 	@ManyToOne
-	@JoinColumn(name = "user_id")
-    private User user;
+	@JoinColumn(name = "from_id")
+    private User from;
 	
 	
+	@ManyToOne
+	@JoinColumn(name = "to_id")
+    private User to;
 	
 	
 	
@@ -67,8 +72,12 @@ public class Reclamation {
 		this.createdOn = createdOn;
 	}
 	
-	public void setUser(User user) {
-		this.user = user;
+	public void setFrom(User user) {
+		this.from = user;
+	}
+	
+	public void setTo(User user) {
+		this.to = user;
 	}
 	
 	public void setRaison(String raison) {
@@ -85,9 +94,11 @@ public class Reclamation {
 		this.unbanDate = builder.unbanDate;
 		this.feedback = builder.feedback;
 		this.raison = builder.raison;
-		this.blockedBy = builder.blockedBy;
+		this.isBlock = builder.isBlock;
 		this.createdOn = builder.createdOn;
-		this.user = builder.user;
+		this.from = builder.from;
+		this.to = builder.to;
+
 	}
 
 
@@ -100,9 +111,11 @@ public class Reclamation {
        	private LocalDateTime unbanDate;
     	private String feedback;
        	private String raison;
-    	private Long blockedBy;
+    	private Boolean isBlock;
     	private LocalDateTime createdOn;
-    	private User user;
+    	private User from;
+    	private User to;
+
     	
         public Builder id(Long id) {
             this.id=id;
@@ -140,8 +153,8 @@ public class Reclamation {
             return this;
         }
 
-        public Builder blockedBy(Long blocker) {
-            this.blockedBy=blocker;
+        public Builder isBlock(Boolean blocker) {
+            this.isBlock=blocker;
             return this;
         }
         
@@ -150,8 +163,13 @@ public class Reclamation {
             return this;
         }
         
-        public Builder user(User user) {
-            this.user=user;
+        public Builder to(User user) {
+            this.to=user;
+            return this;
+        }
+        
+        public Builder from(User user) {
+            this.from=user;
             return this;
         }
 

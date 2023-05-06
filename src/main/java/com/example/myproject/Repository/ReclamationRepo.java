@@ -16,7 +16,8 @@ public interface ReclamationRepo extends JpaRepository<Reclamation, Long> {
     Page<Reclamation> findAllByRateLevelIsNotNull(Pageable pageable);
     Page<Reclamation> findAllByFeedbackIsNotNull(Pageable pageable);
 
-    Page<Reclamation>  findByUser(User user, Pageable pageable); 
+    Page<Reclamation>  findByFrom(User user, Pageable pageable); 
+    Page<Reclamation>  findByTo(User user, Pageable pageable); 
 
 
 }

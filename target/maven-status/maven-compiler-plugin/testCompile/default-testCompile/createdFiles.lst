@@ -1,1 +1,7 @@
+com/example/myproject/bdd/createReclamation.class
+com/example/myproject/bdd/GetById.class
 com/example/myproject/config/Config.class
+com/example/myproject/bdd/UpdateById.class
+com/example/myproject/bdd/DeleteById.class
+com/example/myproject/bdd/GetAll.class
+com/example/myproject/bdd/BddServiceTest.class

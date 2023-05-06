@@ -1,0 +1,346 @@
+Starting MyprojectApplication using Java 18.0.2-ea on skander-X555LJ with PID 10663 (/home/skander/Documents/pi/piwebBack/target/classes started by skander in /home/skander/Documents/pi/piwebBack) 
+No active profile set, falling back to 1 default profile: "default" 
+Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+Finished Spring Data repository scanning in 99 ms. Found 6 JPA repository interfaces. 
+Tomcat initialized with port(s): 8080 (http) 
+Starting service [Tomcat] 
+Starting Servlet engine: [Apache Tomcat/9.0.73] 
+Initializing Spring embedded WebApplicationContext 
+Root WebApplicationContext: initialization completed in 2519 ms 
+HHH000204: Processing PersistenceUnitInfo [name: default] 
+HHH000412: Hibernate ORM core version 5.6.15.Final 
+HCANN000001: Hibernate Commons Annotations {5.1.2.Final} 
+HikariPool-1 - Starting... 
+HikariPool-1 - Start completed. 
+HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Post (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Alarm (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Appointment (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Event (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Invitation (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Don (class must be instantiated by Interceptor) 
+HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+Initialized JPA EntityManagerFactory for persistence unit 'default' 
+spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3c08feb, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2fea50c4, org.springframework.security.web.context.SecurityContextPersistenceFilter@36a5467c, org.springframework.security.web.header.HeaderWriterFilter@4f9e1ada, org.springframework.web.filter.CorsFilter@125cd16b, org.springframework.security.web.authentication.logout.LogoutFilter@76c88120, com.example.myproject.configuration.JwtRequestFilter@640a0880, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@34c49074, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6c61b040, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@27f6c35c, org.springframework.security.web.session.SessionManagementFilter@487406cb, org.springframework.security.web.access.ExceptionTranslationFilter@55563223, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1bb71028] 
+LiveReload server is running on port 35729 
+Tomcat started on port(s): 8080 (http) with context path '' 
+Started MyprojectApplication in 9.919 seconds (JVM running for 10.64) 
+SQL Error: 145, SQLState: HY000 
+Table './pidb/user' is marked as crashed and should be repaired 
+Unexpected error occurred in scheduled task 
+org.springframework.orm.jpa.JpaSystemException: could not extract ResultSet; nested exception is org.hibernate.exception.GenericJDBCException: could not extract ResultSet
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:331)
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:233)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:551)
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61)
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:242)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:152)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:174)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
+	at jdk.proxy4/jdk.proxy4.$Proxy126.findAll(Unknown Source)
+	at com.example.myproject.configuration.BanScheduler.sendEmail(BanScheduler.java:50)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:95)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: org.hibernate.exception.GenericJDBCException: could not extract ResultSet
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:42)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:113)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:99)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.extract(ResultSetReturnImpl.java:67)
+	at org.hibernate.loader.Loader.getResultSet(Loader.java:2322)
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2075)
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:2037)
+	at org.hibernate.loader.Loader.doQuery(Loader.java:956)
+	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:357)
+	at org.hibernate.loader.Loader.doList(Loader.java:2868)
+	at org.hibernate.loader.Loader.doList(Loader.java:2850)
+	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2682)
+	at org.hibernate.loader.Loader.list(Loader.java:2677)
+	at org.hibernate.loader.hql.QueryLoader.list(QueryLoader.java:540)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.list(QueryTranslatorImpl.java:400)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.performList(HQLQueryPlan.java:218)
+	at org.hibernate.internal.SessionImpl.list(SessionImpl.java:1459)
+	at org.hibernate.query.internal.AbstractProducedQuery.doList(AbstractProducedQuery.java:1649)
+	at org.hibernate.query.internal.AbstractProducedQuery.list(AbstractProducedQuery.java:1617)
+	at org.hibernate.query.Query.getResultList(Query.java:165)
+	at org.hibernate.query.criteria.internal.compile.CriteriaQueryTypeQueryAdapter.getResultList(CriteriaQueryTypeQueryAdapter.java:76)
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll(SimpleJpaRepository.java:427)
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll(SimpleJpaRepository.java:88)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker$RepositoryFragmentMethodInvoker.lambda$new$0(RepositoryMethodInvoker.java:289)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:137)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:121)
+	at org.springframework.data.repository.core.support.RepositoryComposition$RepositoryFragments.invoke(RepositoryComposition.java:530)
+	at org.springframework.data.repository.core.support.RepositoryComposition.invoke(RepositoryComposition.java:286)
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$ImplementationMethodExecutionInterceptor.invoke(RepositoryFactorySupport.java:640)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:164)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:139)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:81)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	... 19 common frames omitted
+Caused by: java.sql.SQLException: Table './pidb/user' is marked as crashed and should be repaired
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:972)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.extract(ResultSetReturnImpl.java:57)
+	... 57 common frames omitted
+Initializing Spring DispatcherServlet 'dispatcherServlet' 
+Initializing Servlet 'dispatcherServlet' 
+Completed initialization in 2 ms 
+Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification) 
+Stopping service [Tomcat] 
+Destroying Spring FrameworkServlet 'dispatcherServlet' 
+The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@18.0.2-ea/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@18.0.2-ea/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@18.0.2-ea/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@18.0.2-ea/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@18.0.2-ea/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@18.0.2-ea/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@18.0.2-ea/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@18.0.2-ea/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@18.0.2-ea/java.lang.Thread.run(Thread.java:833) 
+Closing JPA EntityManagerFactory for persistence unit 'default' 
+HikariPool-1 - Shutdown initiated... 
+HikariPool-1 - Shutdown completed. 
+Starting MyprojectApplication using Java 18.0.2-ea on skander-X555LJ with PID 10663 (/home/skander/Documents/pi/piwebBack/target/classes started by skander in /home/skander/Documents/pi/piwebBack) 
+No active profile set, falling back to 1 default profile: "default" 
+Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+Finished Spring Data repository scanning in 21 ms. Found 6 JPA repository interfaces. 
+Tomcat initialized with port(s): 8080 (http) 
+Starting service [Tomcat] 
+Starting Servlet engine: [Apache Tomcat/9.0.73] 
+Initializing Spring embedded WebApplicationContext 
+Root WebApplicationContext: initialization completed in 517 ms 
+HHH000204: Processing PersistenceUnitInfo [name: default] 
+HikariPool-2 - Starting... 
+HikariPool-2 - Start completed. 
+HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Post (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Alarm (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Appointment (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Event (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Invitation (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Don (class must be instantiated by Interceptor) 
+HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+Initialized JPA EntityManagerFactory for persistence unit 'default' 
+spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@719488dd, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5cfcc436, org.springframework.security.web.context.SecurityContextPersistenceFilter@2afc0e0c, org.springframework.security.web.header.HeaderWriterFilter@70d670ad, org.springframework.web.filter.CorsFilter@177f7fb3, org.springframework.security.web.authentication.logout.LogoutFilter@78923451, com.example.myproject.configuration.JwtRequestFilter@7a268cbe, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3cf2f10d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@46ec99f5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7a9de037, org.springframework.security.web.session.SessionManagementFilter@27c64ad8, org.springframework.security.web.access.ExceptionTranslationFilter@58de3071, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@fdc4a69] 
+LiveReload server is running on port 35729 
+Tomcat started on port(s): 8080 (http) with context path '' 
+Started MyprojectApplication in 3.015 seconds (JVM running for 1383.789) 
+Condition evaluation unchanged 
+Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification) 
+Stopping service [Tomcat] 
+The web application [ROOT] appears to have started a thread named [HikariPool-2 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@18.0.2-ea/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@18.0.2-ea/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@18.0.2-ea/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@18.0.2-ea/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@18.0.2-ea/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@18.0.2-ea/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@18.0.2-ea/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@18.0.2-ea/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@18.0.2-ea/java.lang.Thread.run(Thread.java:833) 
+The web application [ROOT] appears to have started a thread named [HikariPool-2 connection adder] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@18.0.2-ea/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@18.0.2-ea/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@18.0.2-ea/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@18.0.2-ea/java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:460)
+ java.base@18.0.2-ea/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1061)
+ java.base@18.0.2-ea/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@18.0.2-ea/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@18.0.2-ea/java.lang.Thread.run(Thread.java:833) 
+Closing JPA EntityManagerFactory for persistence unit 'default' 
+HikariPool-2 - Shutdown initiated... 
+HikariPool-2 - Shutdown completed. 
+Starting MyprojectApplication using Java 18.0.2-ea on skander-X555LJ with PID 10663 (/home/skander/Documents/pi/piwebBack/target/classes started by skander in /home/skander/Documents/pi/piwebBack) 
+No active profile set, falling back to 1 default profile: "default" 
+Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+Finished Spring Data repository scanning in 15 ms. Found 6 JPA repository interfaces. 
+Tomcat initialized with port(s): 8080 (http) 
+Starting service [Tomcat] 
+Starting Servlet engine: [Apache Tomcat/9.0.73] 
+Initializing Spring embedded WebApplicationContext 
+Root WebApplicationContext: initialization completed in 350 ms 
+HHH000204: Processing PersistenceUnitInfo [name: default] 
+HikariPool-3 - Starting... 
+HikariPool-3 - Start completed. 
+HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Post (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Alarm (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Appointment (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Event (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Invitation (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Don (class must be instantiated by Interceptor) 
+HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+Initialized JPA EntityManagerFactory for persistence unit 'default' 
+spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@683b8de0, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@434c0a2a, org.springframework.security.web.context.SecurityContextPersistenceFilter@28c469cd, org.springframework.security.web.header.HeaderWriterFilter@5fab2a38, org.springframework.web.filter.CorsFilter@736d8fd0, org.springframework.security.web.authentication.logout.LogoutFilter@2656ef24, com.example.myproject.configuration.JwtRequestFilter@5fb6f338, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@58ee8833, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5e1293fc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6579780f, org.springframework.security.web.session.SessionManagementFilter@90f5723, org.springframework.security.web.access.ExceptionTranslationFilter@33a87e58, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@771c33c9] 
+LiveReload server is running on port 35729 
+Tomcat started on port(s): 8080 (http) with context path '' 
+Started MyprojectApplication in 2.473 seconds (JVM running for 1387.726) 
+Condition evaluation unchanged 
+Initializing Spring DispatcherServlet 'dispatcherServlet' 
+Initializing Servlet 'dispatcherServlet' 
+Completed initialization in 1 ms 
+Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification) 
+Stopping service [Tomcat] 
+Destroying Spring FrameworkServlet 'dispatcherServlet' 
+The web application [ROOT] appears to have started a thread named [HikariPool-3 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@18.0.2-ea/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@18.0.2-ea/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@18.0.2-ea/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@18.0.2-ea/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@18.0.2-ea/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@18.0.2-ea/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@18.0.2-ea/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@18.0.2-ea/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@18.0.2-ea/java.lang.Thread.run(Thread.java:833) 
+Closing JPA EntityManagerFactory for persistence unit 'default' 
+HikariPool-3 - Shutdown initiated... 
+HikariPool-3 - Shutdown completed. 
+Starting MyprojectApplication using Java 18.0.2-ea on skander-X555LJ with PID 10663 (/home/skander/Documents/pi/piwebBack/target/classes started by skander in /home/skander/Documents/pi/piwebBack) 
+No active profile set, falling back to 1 default profile: "default" 
+Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+Finished Spring Data repository scanning in 23 ms. Found 6 JPA repository interfaces. 
+Tomcat initialized with port(s): 8080 (http) 
+Starting service [Tomcat] 
+Starting Servlet engine: [Apache Tomcat/9.0.73] 
+Initializing Spring embedded WebApplicationContext 
+Root WebApplicationContext: initialization completed in 437 ms 
+HHH000204: Processing PersistenceUnitInfo [name: default] 
+HikariPool-4 - Starting... 
+HikariPool-4 - Start completed. 
+HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Post (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Alarm (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Appointment (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Event (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Invitation (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Don (class must be instantiated by Interceptor) 
+HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+Initialized JPA EntityManagerFactory for persistence unit 'default' 
+spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6d90a20b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4ca29d7a, org.springframework.security.web.context.SecurityContextPersistenceFilter@41030c1, org.springframework.security.web.header.HeaderWriterFilter@787329af, org.springframework.web.filter.CorsFilter@101e3f4e, org.springframework.security.web.authentication.logout.LogoutFilter@57e51b4b, com.example.myproject.configuration.JwtRequestFilter@49c7419a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4a058aa2, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2b5afc1c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1281ea5e, org.springframework.security.web.session.SessionManagementFilter@3749c398, org.springframework.security.web.access.ExceptionTranslationFilter@75d76180, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5a0b02d9] 
+LiveReload server is running on port 35729 
+Tomcat started on port(s): 8080 (http) with context path '' 
+Started MyprojectApplication in 2.633 seconds (JVM running for 1542.097) 
+Condition evaluation unchanged 
+Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification) 
+Stopping service [Tomcat] 
+The web application [ROOT] appears to have started a thread named [HikariPool-4 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@18.0.2-ea/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@18.0.2-ea/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@18.0.2-ea/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@18.0.2-ea/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@18.0.2-ea/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@18.0.2-ea/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@18.0.2-ea/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@18.0.2-ea/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@18.0.2-ea/java.lang.Thread.run(Thread.java:833) 
+Closing JPA EntityManagerFactory for persistence unit 'default' 
+HikariPool-4 - Shutdown initiated... 
+HikariPool-4 - Shutdown completed. 
+Starting MyprojectApplication using Java 18.0.2-ea on skander-X555LJ with PID 10663 (/home/skander/Documents/pi/piwebBack/target/classes started by skander in /home/skander/Documents/pi/piwebBack) 
+No active profile set, falling back to 1 default profile: "default" 
+Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+Finished Spring Data repository scanning in 21 ms. Found 6 JPA repository interfaces. 
+Tomcat initialized with port(s): 8080 (http) 
+Starting service [Tomcat] 
+Starting Servlet engine: [Apache Tomcat/9.0.73] 
+Initializing Spring embedded WebApplicationContext 
+Root WebApplicationContext: initialization completed in 388 ms 
+HHH000204: Processing PersistenceUnitInfo [name: default] 
+HikariPool-5 - Starting... 
+HikariPool-5 - Start completed. 
+HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Post (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Alarm (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Appointment (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Event (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Invitation (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Don (class must be instantiated by Interceptor) 
+HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+Initialized JPA EntityManagerFactory for persistence unit 'default' 
+spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@23509779, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@47b142b2, org.springframework.security.web.context.SecurityContextPersistenceFilter@61d05c42, org.springframework.security.web.header.HeaderWriterFilter@45b63831, org.springframework.web.filter.CorsFilter@7d10e731, org.springframework.security.web.authentication.logout.LogoutFilter@2a017bb9, com.example.myproject.configuration.JwtRequestFilter@77309b9f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4bfb7fc6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3f78a138, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3282a646, org.springframework.security.web.session.SessionManagementFilter@e7f142e, org.springframework.security.web.access.ExceptionTranslationFilter@3f53e80, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@76473356] 
+LiveReload server is running on port 35729 
+Tomcat started on port(s): 8080 (http) with context path '' 
+Started MyprojectApplication in 1.963 seconds (JVM running for 1551.554) 
+Condition evaluation unchanged 
+Initializing Spring DispatcherServlet 'dispatcherServlet' 
+Initializing Servlet 'dispatcherServlet' 
+Completed initialization in 2 ms 
+Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification) 
+Stopping service [Tomcat] 
+Destroying Spring FrameworkServlet 'dispatcherServlet' 
+The web application [ROOT] appears to have started a thread named [HikariPool-5 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@18.0.2-ea/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base@18.0.2-ea/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:252)
+ java.base@18.0.2-ea/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1672)
+ java.base@18.0.2-ea/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base@18.0.2-ea/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base@18.0.2-ea/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1062)
+ java.base@18.0.2-ea/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1122)
+ java.base@18.0.2-ea/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ java.base@18.0.2-ea/java.lang.Thread.run(Thread.java:833) 
+Closing JPA EntityManagerFactory for persistence unit 'default' 
+HikariPool-5 - Shutdown initiated... 
+HikariPool-5 - Shutdown completed. 
+Starting MyprojectApplication using Java 18.0.2-ea on skander-X555LJ with PID 10663 (/home/skander/Documents/pi/piwebBack/target/classes started by skander in /home/skander/Documents/pi/piwebBack) 
+No active profile set, falling back to 1 default profile: "default" 
+Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+Finished Spring Data repository scanning in 12 ms. Found 6 JPA repository interfaces. 
+Tomcat initialized with port(s): 8080 (http) 
+Starting service [Tomcat] 
+Starting Servlet engine: [Apache Tomcat/9.0.73] 
+Initializing Spring embedded WebApplicationContext 
+Root WebApplicationContext: initialization completed in 268 ms 
+HHH000204: Processing PersistenceUnitInfo [name: default] 
+HikariPool-6 - Starting... 
+HikariPool-6 - Start completed. 
+HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Post (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Alarm (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Appointment (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Event (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Invitation (class must be instantiated by Interceptor) 
+HHH000182: No default (no-argument) constructor for class: com.example.myproject.entities.Don (class must be instantiated by Interceptor) 
+HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+Initialized JPA EntityManagerFactory for persistence unit 'default' 
+spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5bfdfea8, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1d940281, org.springframework.security.web.context.SecurityContextPersistenceFilter@6bbdb66d, org.springframework.security.web.header.HeaderWriterFilter@5d8b6e99, org.springframework.web.filter.CorsFilter@406f822c, org.springframework.security.web.authentication.logout.LogoutFilter@2f53d629, com.example.myproject.configuration.JwtRequestFilter@727f8a07, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@492024f7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4f5974ec, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@72d51921, org.springframework.security.web.session.SessionManagementFilter@4d357a3c, org.springframework.security.web.access.ExceptionTranslationFilter@68f948cd, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1494d38b] 
+LiveReload server is running on port 35729 
+Tomcat started on port(s): 8080 (http) with context path '' 
+Started MyprojectApplication in 1.893 seconds (JVM running for 1600.999) 
+Condition evaluation unchanged 
+Initializing Spring DispatcherServlet 'dispatcherServlet' 
+Initializing Servlet 'dispatcherServlet' 
+Completed initialization in 2 ms 
