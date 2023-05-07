@@ -38,5 +38,10 @@ public class Don implements Serializable {
 	@JoinColumn(name = "post_id")
 	@JsonIgnore
     private Post post;
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	@JsonIgnore
+	private User user;
 
 }

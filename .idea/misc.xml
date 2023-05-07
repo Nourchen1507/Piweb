@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   <component name="ExternalStorageConfigurationManager" enabled="true" />
 >>>>>>> origin/chams
+=======
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+>>>>>>> origin/ahmed
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
@@ -11,6 +15,7 @@
       </list>
     </option>
   </component>
+<<<<<<< HEAD
 <<<<<<< HEAD
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
@@ -21,4 +26,7 @@
   <component name="ProjectType">
     <option name="id" value="jpab" />
   </component>
+=======
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+>>>>>>> origin/ahmed
 </project>

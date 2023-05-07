@@ -32,7 +32,6 @@ public class Appointment implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name = "helper_id")
-	@JsonIgnore
     private User helper;
 
 	public User getHelper() {
@@ -45,7 +44,6 @@ public class Appointment implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "organization_id")
-	@JsonIgnore
     private User organization;
 
 

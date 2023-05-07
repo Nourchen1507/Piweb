@@ -1,6 +1,7 @@
 package com.example.myproject.dto;
 
-import com.example.myproject.entities.Alarm;
+import com.example.myproject.entities.Alarm; 
+
 import lombok.Getter;
 import lombok.Setter;
 

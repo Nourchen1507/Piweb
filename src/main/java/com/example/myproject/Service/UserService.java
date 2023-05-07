@@ -1,11 +1,12 @@
  package com.example.myproject.Service;
 
-import com.example.myproject.Exception.UserNotFoundException;
+import com.example.myproject.Exception.UserNotFoundException; 
 import com.example.myproject.Service.Twilio.SmsServiceImpl;
 import com.example.myproject.entities.*;
 import com.example.myproject.repositories.PasswordResetTokenRepository;
 import com.example.myproject.repositories.RoleRepository;
 import com.example.myproject.repositories.UserRepository;
+import com.example.myproject.request.SingupRequest;
 import com.example.myproject.util.UserCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,16 +15,20 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.transaction.Transactional;
+import javax.validation.Valid;
+import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class UserService {
     private Logger logger = LoggerFactory.getLogger(UserService.class);
+    public static final int MAX_FAILED_ATTEMPTS = 3;
+
+    private static final long LOCK_TIME_DURATION = 24 * 60 * 60 * 1000; // 24 hours
     @Autowired
     private UserRepository userDao;
 
@@ -56,7 +61,7 @@ public class UserService {
         roleDao.save(adminRole);
 
         Role OrganisationRole = new Role();
-        OrganisationRole.setRoleName("Organisation");
+        OrganisationRole.setRoleName("organisation");
 
         roleDao.save(OrganisationRole);
 
@@ -69,8 +74,12 @@ public class UserService {
     }
 
     public User registerNewUser(User user) {
+        logger.info("aaaaa");
+logger.info(user.getRole().getRoleName());
+        Role role = roleDao.findById(user.getRole().getRoleName()).get();
+        user.setRole(role);
         user.setPassword(getEncodedPassword(user.getPassword()));
-        user.setIsverified(0);
+        user.setVerified(false);
         User saveduser=userDao.save(user);
         emailService.sendVerificationEmail(saveduser);
         return saveduser;
@@ -79,19 +88,19 @@ public class UserService {
     public User isVerified (String userName){
 
         User VerifiedUser = userDao.findByUserName(userName);
-        int a=VerifiedUser.getIsverified();
+        boolean a=VerifiedUser.isVerified();
         logger.error(String.valueOf(a));
-        if (VerifiedUser != null){
+
 
             logger.error("iciiii");
-            if (VerifiedUser.getIsverified() == 1) {
+            if (VerifiedUser.isVerified() ) {
                 logger.error("iciiiisssss");
                 return VerifiedUser;
             }
             else{
                 VerifiedUser=null;
             }
-            }
+
           return VerifiedUser;
         }
 
@@ -102,7 +111,8 @@ public class UserService {
     public User activateUser(String token) {
         User user = userDao.findByVerificationToken(token);
         if (user != null) {
-            user.setIsverified(1); 
+
+            user.setVerified(true);
             user.setVerificationToken(null);
             userDao.save(user);
         }
@@ -119,19 +129,27 @@ public class UserService {
     public List<User> getAll(){
         return userDao.findAll();
     }
-    public User findOne(Long id){
-        return userDao.findById(id).orElse(null);
+
+    public User findOne(String userName){
+        return userDao.findByUserName(userName);
     }
     public List<User> getUnverifiedUsers() {
         return userDao.findUnverifiedUsers();
     }
-    public void delete(Long id){
-        User u= userDao.findById(id).orElse(null);
-        u.getRole().clear();
+
+    public void delete(String userName){
+        User u= userDao.findByUserName(userName);
         userDao.delete(u);
     }
-    public void update(User user){
-        userDao.save(user);
+    public User update(Long id, User user) throws IOException {
+        User user2 = userDao.findById(id).get();
+        user2.setMailAddress(user.getMailAddress());
+        user2.setImageProfile(user.getImageProfile());
+        user2.setUserPhone(user.getUserPhone());
+        user2.setCertificate(user.getCertificate());
+        user2.setLocation(user.getLocation());
+        user2.setUserName(user.getUserName());
+        return userDao.save(user2);
     }
 
     public long count(){
@@ -143,9 +161,9 @@ public class UserService {
         List<User> users=userDao.findAll();
         for(User user:users) {
 
-            Set<Role> roles=user.getRole();
-            Role role= roles.iterator().next();
-            String rolename = role.getRoleName();
+
+
+            String rolename = user.getRole().getRoleName();
             if(rolename.equals("helper")){
                 countoperateur+=1;
             }
@@ -192,12 +210,12 @@ public class UserService {
         userDao.save(user);
     }
     public void ISVerified(String userName) {
-        int  verified=1;
+
         User user = userDao.findByUserName(userName);
         if (user == null) {
             throw new IllegalArgumentException("User not found");
         }
-        user.setIsverified(verified);
+        user.setVerified(true);
         userDao.save(user);
     }
 
@@ -217,7 +235,7 @@ public class UserService {
         return this.userDao.findByMailAddress(mailAddress);
     }
 
-    public void editUser(User user){
+    public void editUser(@Valid @RequestBody User user){
         this.userDao.save(user);
     }
 
@@ -271,5 +289,20 @@ public class UserService {
     }
 
 
+    public Integer changePassword(Long id, ChangePasswordRequest password) {
+        User user = userDao.findById(id).get();
+        if (user == null) {
+            return 404;
+        }
+        logger.info(password.getNewpassword());
+        if(passwordEncoder.matches(password.getOldpassword(), user.getPassword())){
+            user.setPassword(passwordEncoder.encode(password.getNewpassword()));
+            userDao.save(user);
+            return 200;
+        }
+        else {
+            return 400;
+        }
+    }
 
 }

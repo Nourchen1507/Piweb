@@ -1,4 +1,4 @@
-package com.example.myproject.services;
+package com.example.myproject.Service;
 
 import com.example.myproject.dto.AppointmentDTO;
 import com.example.myproject.dto.CreateUpdateAppointmentDTO;

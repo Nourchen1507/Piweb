@@ -1,9 +1,9 @@
 package com.example.myproject.services;
 
-import com.example.myproject.entities.Alarm;
+import com.example.myproject.entities.Alarm; 
 import com.example.myproject.entities.Appointment;
+import com.example.myproject.repositories.AppointmentRepository;
 import com.example.myproject.repository.AlarmRepository;
-import com.example.myproject.repository.AppointmentRepository;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
