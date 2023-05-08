@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 com/example/myproject/controllers/ImageController.class
 com/example/myproject/Service/RoleService.class
 com/example/myproject/entities/ChangePasswordRequest.class
@@ -97,3 +98,5 @@ com/example/myproject/dto/AppointmentDTO.class
 com/example/myproject/entities/JwtRequest.class
 com/example/myproject/entities/UserResetPassword.class
 com/example/myproject/util/JwtUtil.class
+=======
+>>>>>>> origin/PInourchen

@@ -34,6 +34,5 @@ public class Alarm implements Serializable {
 	private Appointment appointment;
 	
 	
-	
 
 }

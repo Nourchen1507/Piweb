@@ -1,13 +1,14 @@
 package com.example.myproject.controller;
 
 
-import com.example.myproject.entities.Alarm;
+import com.example.myproject.entities.Alarm; 
 import com.example.myproject.entities.Appointment;
 import com.example.myproject.repository.IAppointmentRepository;
 import com.example.myproject.services.IAlarmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,6 +42,7 @@ public class AlarmController  {
     }
 
     @DeleteMapping("/delete/{id}")
+
     void deleteAlarm(@PathVariable("id") Long idAlarm){
         iAlarmService.removeAlarm(idAlarm);
     }
@@ -60,7 +62,6 @@ public class AlarmController  {
     List<Alarm> getAllAlarm(){
         return  iAlarmService.getAllAlarm();
     }
-
 
 
 }

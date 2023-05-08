@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /home/skander/Documents/pi/piwebBack/src/main/java/com/example/myproject/Service/EmailService.java
 /home/skander/Documents/pi/piwebBack/src/main/java/com/example/myproject/entities/Appointment.java
 /home/skander/Documents/pi/piwebBack/src/main/java/com/example/myproject/Service/VerificationTokenService.java
@@ -93,3 +94,16 @@
 /home/skander/Documents/pi/piwebBack/src/main/java/com/example/myproject/entities/Don.java
 /home/skander/Documents/pi/piwebBack/src/main/java/com/example/myproject/Service/FileUploadService.java
 /home/skander/Documents/pi/piwebBack/src/main/java/com/example/myproject/Exception/UserBlockedException.java
+=======
+C:\Users\user\Desktop\PiSpringCloud\Piweb\Piweb\src\main\java\com\example\myproject\entities\Don.java
+C:\Users\user\Desktop\PiSpringCloud\Piweb\Piweb\src\main\java\com\example\myproject\entities\Appointment.java
+C:\Users\user\Desktop\PiSpringCloud\Piweb\Piweb\src\main\java\com\example\myproject\entities\Role.java
+C:\Users\user\Desktop\PiSpringCloud\Piweb\Piweb\src\main\java\com\example\myproject\MyprojectApplication.java
+C:\Users\user\Desktop\PiSpringCloud\Piweb\Piweb\src\main\java\com\example\myproject\entities\Invitation.java
+C:\Users\user\Desktop\PiSpringCloud\Piweb\Piweb\src\main\java\com\example\myproject\entities\Post.java
+C:\Users\user\Desktop\PiSpringCloud\Piweb\Piweb\src\main\java\com\example\myproject\entities\Reclamation.java
+C:\Users\user\Desktop\PiSpringCloud\Piweb\Piweb\src\main\java\com\example\myproject\entities\User.java
+C:\Users\user\Desktop\PiSpringCloud\Piweb\Piweb\src\main\java\com\example\myproject\entities\Alarm.java
+C:\Users\user\Desktop\PiSpringCloud\Piweb\Piweb\src\main\java\com\example\myproject\entities\Event.java
+C:\Users\user\Desktop\PiSpringCloud\Piweb\Piweb\src\main\java\com\example\myproject\entities\DonType.java
+>>>>>>> origin/PInourchen

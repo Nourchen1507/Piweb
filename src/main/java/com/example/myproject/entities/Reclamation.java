@@ -1,6 +1,6 @@
 package com.example.myproject.entities;
 
-import java.time.LocalDateTime; 
+import java.time.LocalDateTime;  
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -25,8 +25,6 @@ import lombok.Setter;
 @ToString
 public class Reclamation {
 
-
-	
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)

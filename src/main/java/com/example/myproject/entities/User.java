@@ -1,6 +1,6 @@
 package com.example.myproject.entities;
 
-import java.io.Serializable; 
+import java.io.Serializable;  
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
@@ -41,6 +41,7 @@ import lombok.ToString;
 //)
 
 public class User {
+
 
 
 	@Id

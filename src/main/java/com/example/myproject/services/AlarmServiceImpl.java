@@ -1,6 +1,6 @@
 package com.example.myproject.services;
 
-import com.example.myproject.entities.Alarm; 
+import com.example.myproject.entities.Alarm;  
 import com.example.myproject.entities.Appointment;
 import com.example.myproject.repositories.AppointmentRepository;
 import com.example.myproject.repository.AlarmRepository;
@@ -24,6 +24,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 @Service("alarm")
 @EnableScheduling
 @Configuration
+
 public class AlarmServiceImpl implements IAlarmService{
 
 
@@ -41,6 +42,7 @@ public class AlarmServiceImpl implements IAlarmService{
        return alarmRepository.save(alarm);
 
 
+
     }
 
     @Override
@@ -56,6 +58,7 @@ public class AlarmServiceImpl implements IAlarmService{
     @Override
     public void removeAlarm(Long idAlarm) {
         alarmRepository.deleteById(idAlarm);
+
 
     }
 
@@ -131,7 +134,6 @@ public class AlarmServiceImpl implements IAlarmService{
             }, date);
         }
     }
-
 
 
 
