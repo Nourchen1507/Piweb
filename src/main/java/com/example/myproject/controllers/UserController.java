@@ -37,22 +37,19 @@ public class UserController {
     private VerificationTokenService verificationTokenService;
 
     @PostMapping("/registerNewUser")
-    public ResponseEntity<?> createUser( @RequestBody User user) {
+    public ResponseType createUser( @RequestBody User user) {
+    	System.out.println("useeeeeeeeeeer"+user);
         if (userDao.existsByUserName(user.getUserName())) {
-            return ResponseEntity
-                    .badRequest()
-                    .body(("Error: Username is already taken!"));
+            return new ResponseType(400);
         }
 
         if (userDao.existsByMailAddress(user.getMailAddress())) {
-            return ResponseEntity
-                    .badRequest()
-                    .body(("Error: Email is already in use!"));
+            return new ResponseType(404);
         }
         User savedUser = userService.registerNewUser(user);
         UserVerificationToken verificationToken = verificationTokenService.createVerificationToken(user); // création du jeton de vérification
         verificationTokenService.saveVerificationToken(verificationToken);
-        return ResponseEntity.ok(("User registered successfully!"));
+        return new ResponseType(200);
     }
 
     @PutMapping("/activate/{verificationToken}")
@@ -102,10 +99,10 @@ public class UserController {
         return "This URL is only accessible to the helper";
     }
 
-    @DeleteMapping ({"/delete/{userName}"})
-    @PreAuthorize("hasRole('Admin')")
-    public void delete(@PathVariable String userName){
-        userService.delete(userName);
+    @DeleteMapping ({"/delete/{id}"})
+   // @PreAuthorize("hasRole('Admin')")
+    public void delete(@PathVariable Long id){
+        userService.delete(id);
     }
 
     @PutMapping(value="/update/{id}")
@@ -197,6 +194,14 @@ public class UserController {
         return new ResponseType(code);
     }
 
+    @GetMapping ("findbymail/{email}")
+    public User UserExist(@PathVariable String email) {
+        return userDao.findByMailAddress(email);
+    }
 
-
+    @GetMapping ("getAll")
+    public Iterable<User>getAllUsers() {
+        return userService.findAll();
+    }
 }
+

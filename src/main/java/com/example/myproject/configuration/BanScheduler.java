@@ -60,7 +60,7 @@ public class BanScheduler {
 	filteredUser.forEach(e->e.setUnbanDate(null));
 	userrepo.saveAll(filteredUser);
 	
-	
+	 
 	 
 
 	    }

@@ -54,7 +54,7 @@ public class UserService {
 
     public void initRoleAndUser() {
 
-
+    	roleDao.deleteAll();
         Role adminRole = new Role();
         adminRole.setRoleName("Admin");
 
@@ -76,7 +76,7 @@ public class UserService {
     public User registerNewUser(User user) {
         logger.info("aaaaa");
 logger.info(user.getRole().getRoleName());
-        Role role = roleDao.findById(user.getRole().getRoleName()).get();
+        Role role = roleDao.findByRoleName(user.getRole().getRoleName());
         user.setRole(role);
         user.setPassword(getEncodedPassword(user.getPassword()));
         user.setVerified(false);
@@ -137,8 +137,8 @@ logger.info(user.getRole().getRoleName());
         return userDao.findUnverifiedUsers();
     }
 
-    public void delete(String userName){
-        User u= userDao.findByUserName(userName);
+    public void delete(Long id){
+        User u= userDao.findById(id).get();
         userDao.delete(u);
     }
     public User update(Long id, User user) throws IOException {
@@ -146,8 +146,8 @@ logger.info(user.getRole().getRoleName());
         user2.setMailAddress(user.getMailAddress());
         user2.setImageProfile(user.getImageProfile());
         user2.setUserPhone(user.getUserPhone());
-        user2.setCertificate(user.getCertificate());
         user2.setLocation(user.getLocation());
+        user2.setCertificate(user.getCertificate());
         user2.setUserName(user.getUserName());
         return userDao.save(user2);
     }
@@ -175,7 +175,7 @@ logger.info(user.getRole().getRoleName());
         return userDao.findByMailAddress(mailAddress);
     }
 
-    @Value("${spring.mail.username}")
+    @Value("wleddelkhir@gmail.com")
     private String fromAddress;
     public void generatePasswordResetToken(String mailAddress) {
         User user = userDao.findByMailAddress(mailAddress);
@@ -303,6 +303,10 @@ logger.info(user.getRole().getRoleName());
         else {
             return 400;
         }
+    }
+
+    public List < User > findAll() {
+        return userDao.findAll();
     }
 
 }

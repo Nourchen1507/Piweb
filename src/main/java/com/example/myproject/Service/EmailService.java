@@ -41,12 +41,18 @@ public class EmailService implements IUserEmailRepository {
     }
 @Override
     public void sendCodeByMail(UserMail mail) {
-        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+    
+	try {
+		SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
         simpleMailMessage.setFrom("wledelkhirr@gmail.com");
         simpleMailMessage.setTo(mail.getTo());
         simpleMailMessage.setSubject("Code Active");
         simpleMailMessage.setText(mail.getCode());
         userMailSender.send(simpleMailMessage);
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	
     }
     public void sendAppointmentCreatedEmail(User helper, User organization, Appointment appointment)
             throws MessagingException {

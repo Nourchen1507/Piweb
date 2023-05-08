@@ -50,7 +50,7 @@ public class JwtService implements UserDetailsService {
 
         String userName = jwtRequest.getUserName();
         String password = jwtRequest.getPassword();
-        String message = "user is not verified";
+        int message = 230;
         if (userService.isVerified(userName)!=null){
 
             authenticate(userName, password);
@@ -64,7 +64,6 @@ public class JwtService implements UserDetailsService {
         else {
             return  new JwtResponse(message);
         }
-
 
 
     }

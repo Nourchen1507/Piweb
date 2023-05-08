@@ -31,9 +31,11 @@ public class AppointmentServiceImpl implements AppointmentService {
     private final UserRepository userRepository;
     private final EmailService emailService;
 
-
+ 
     @Override
     public List<AppointmentDTO> getAllAppointments() {
+    System.out.println("oraaaaaaaaa"+ appointmentRepository
+                .findAll());
         return appointmentRepository
                 .findAll()
                 .stream()

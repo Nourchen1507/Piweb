@@ -5,15 +5,33 @@ public class JwtResponse {
     private User user;
     private String jwtToken;
     private String message;
+    private String message1;
+    private int statusCode;
 
     public JwtResponse(User user, String jwtToken) {
         this.user = user;
         this.jwtToken = jwtToken;
     }
 
-    public JwtResponse(String message) {
+    public JwtResponse(int statusCode) {
 
-        this.message = message;
+        this.statusCode = statusCode;
+    }
+
+    public int getStatusCode() {
+        return statusCode;
+    }
+
+    public String getMessage1() {
+        return message1;
+    }
+
+    public void setMessage1(String message1) {
+        this.message1 = message1;
+    }
+
+    public void setStatusCode(int statusCode) {
+        this.statusCode = statusCode;
     }
 
     public String getMessage() {
