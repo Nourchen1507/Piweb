@@ -1,6 +1,6 @@
-package com.example.myproject.Service;
+ package com.example.myproject.Service;
 
-import com.example.myproject.Exception.UserNotFoundException;
+import com.example.myproject.Exception.UserNotFoundException; 
 import com.example.myproject.Service.Twilio.SmsServiceImpl;
 import com.example.myproject.entities.*;
 import com.example.myproject.repositories.PasswordResetTokenRepository;
@@ -53,30 +53,23 @@ public class UserService {
     private SmsServiceImpl smsService;
 
     public void initRoleAndUser() {
+        addRoleIfItDoesNotExist("Admin");
+        addRoleIfItDoesNotExist("organisation");
+        addRoleIfItDoesNotExist("helper");
+    }
 
-
-        Role adminRole = new Role();
-        adminRole.setRoleName("Admin");
-
-        roleDao.save(adminRole);
-
-        Role OrganisationRole = new Role();
-        OrganisationRole.setRoleName("Organisation");
-
-        roleDao.save(OrganisationRole);
-
-        Role userRole = new Role();
-        userRole.setRoleName("helper");
-
-        roleDao.save(userRole);
-
-
+    private void addRoleIfItDoesNotExist(String roleName) {
+        if (!roleDao.existsByRoleName(roleName)) {
+            Role role = new Role();
+            role.setRoleName(roleName);
+            roleDao.save(role);
+        }
     }
 
     public User registerNewUser(User user) {
         logger.info("aaaaa");
 logger.info(user.getRole().getRoleName());
-        Role role = roleDao.findById(user.getRole().getRoleName()).get();
+        Role role = roleDao.findByRoleName(user.getRole().getRoleName());
         user.setRole(role);
         user.setPassword(getEncodedPassword(user.getPassword()));
         user.setVerified(false);
@@ -111,6 +104,7 @@ logger.info(user.getRole().getRoleName());
     public User activateUser(String token) {
         User user = userDao.findByVerificationToken(token);
         if (user != null) {
+
             user.setVerified(true);
             user.setVerificationToken(null);
             userDao.save(user);
@@ -128,18 +122,20 @@ logger.info(user.getRole().getRoleName());
     public List<User> getAll(){
         return userDao.findAll();
     }
+
     public User findOne(String userName){
         return userDao.findByUserName(userName);
     }
     public List<User> getUnverifiedUsers() {
         return userDao.findUnverifiedUsers();
     }
-    public void delete(String userName){
-        User u= userDao.findByUserName(userName);
+
+    public void delete(Long id){
+        User u= userDao.findById(id).get();
         userDao.delete(u);
     }
     public User update(Long id, User user) throws IOException {
-        User user2 = userDao.findByIdUser(id);
+        User user2 = userDao.findById(id).get();
         user2.setMailAddress(user.getMailAddress());
         user2.setImageProfile(user.getImageProfile());
         user2.setUserPhone(user.getUserPhone());
@@ -172,7 +168,7 @@ logger.info(user.getRole().getRoleName());
         return userDao.findByMailAddress(mailAddress);
     }
 
-    @Value("${spring.mail.username}")
+    @Value("wleddelkhir@gmail.com")
     private String fromAddress;
     public void generatePasswordResetToken(String mailAddress) {
         User user = userDao.findByMailAddress(mailAddress);
@@ -287,7 +283,7 @@ logger.info(user.getRole().getRoleName());
 
 
     public Integer changePassword(Long id, ChangePasswordRequest password) {
-        User user = userDao.findByIdUser(id);
+        User user = userDao.findById(id).get();
         if (user == null) {
             return 404;
         }
