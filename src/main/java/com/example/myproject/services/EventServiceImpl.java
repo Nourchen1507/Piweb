@@ -42,14 +42,13 @@ public class EventServiceImpl implements IEventService{
     }
 
     @Override
-    public Event updateEvent(int idEvent, Event event) {
-        List<Event> newEvent = eventRepository.findByIdEvent(idEvent);
-        if (event.getName()!= null)
-            newEvent.get(0).setName(event.getName());
-        return eventRepository.save(newEvent.get(0));
-
+    public Event MettreAjourEvent(Event e) {
+       Event event = eventRepository.findById(e.getIdEvent()).orElse(null);
+        if (event!= null)
+            eventRepository.save(e);
+        log.info("Mise à jour réussie:"+e );
+        return (e);
     }
-
     @Override
     public void removeEvent(int idEvent) {
         eventRepository.deleteById(idEvent);

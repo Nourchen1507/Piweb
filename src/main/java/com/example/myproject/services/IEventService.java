@@ -11,7 +11,9 @@ public interface IEventService {
 
     int addEvent(Event event);
 
-   Event updateEvent(int idEvent, Event event);
+
+    public Event MettreAjourEvent(Event E);
+
 
     void removeEvent(int idEvent);
 

@@ -38,17 +38,16 @@ public class InvitationServiceImpl implements IInvitationService {
     }
 
     @Override
+    public Invitation mettreAjourInvitation(int id) {
+        return null;
+    }
+
+    @Override
     public void removeInvitation(int idInvitation) {
         invitationRepository.deleteById(idInvitation);
 
     }
-    @Override
-    public Invitation mettreAjourInvitation(int id) {
-        Invitation i = invitationRepository.findById(id).get();
-        invitationRepository.save(i);
-        log.info("invitation "+i.getName()+" modifié avec success");
-        return (i);
-    }
+
 
     @Override
     public List<Invitation> getAllInvitation() {

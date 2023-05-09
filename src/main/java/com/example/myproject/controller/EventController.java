@@ -38,12 +38,12 @@ public class EventController {
        iEventService.removeEvent(idEvent);
     }
 
-
-    @PutMapping("/update/{id}")
-   Event updateEvent(@PathVariable("id") int idEvent , @RequestBody Event event)
-    {
-        return iEventService.updateEvent(idEvent,event);
+    @PutMapping("/Modify/{id}")
+    public Event modifyOperateur(@RequestBody Event e, @PathVariable("id") Integer id ) {
+// Etudiant etud = etudRep.findById(id).get();
+        return iEventService.MettreAjourEvent(e);
     }
+
 
     @GetMapping("/get/{id}")
     List<Event> getEvent(@PathVariable("id") int idEvent){

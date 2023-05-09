@@ -79,6 +79,8 @@ public class InvitationController {
 
         iInvitationService.assignInvitationToEvenment(idInvitation,idEvenment);
     }
+
+
     @GetMapping("/pdf/invitations")
 
     public void generatePdf(HttpServletResponse response) throws DocumentException, IOException {

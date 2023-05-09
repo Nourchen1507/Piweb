@@ -70,8 +70,7 @@ public class PDFController {
         // Adding Cell to table
         cell.setPhrase(new Phrase("ID", font));
         table.addCell(cell);
-        cell.setPhrase(new Phrase("Name", font));
-        table.addCell(cell);
+
         cell.setPhrase(new Phrase( "HelperInvited", font));
         table.addCell(cell);
 
@@ -80,7 +79,7 @@ public class PDFController {
             // Adding partnership id
             table.addCell(String.valueOf(invitation.getIdInvitation()));
             // Adding partnership representative name
-            table.addCell(invitation.getName());
+
             // Adding invitatio helperinvited
             table.addCell(invitation.getHelperInvited());
 

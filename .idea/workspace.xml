@@ -8,23 +8,16 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myproject/controller/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myproject/controller/EventController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myproject/controller/InvitationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myproject/controller/InvitationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myproject/entities/Invitation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myproject/entities/Invitation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myproject/repository/IInvitationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myproject/repository/IInvitationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myproject/controller/PDFController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myproject/controller/PDFController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myproject/services/EventServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myproject/services/EventServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myproject/services/IEventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myproject/services/IEventService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myproject/services/IInvitationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myproject/services/IInvitationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myproject/services/InvitationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myproject/services/InvitationServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/myproject/controller/EventController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/myproject/controller/EventController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/myproject/controller/InvitationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/myproject/controller/InvitationController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/myproject/controller/PDFController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/myproject/controller/PDFController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/myproject/entities/Event$EventBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/myproject/entities/Event$EventBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/myproject/entities/Event.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/myproject/entities/Event.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/myproject/entities/Invitation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/myproject/entities/Invitation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/myproject/repository/EventRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/myproject/repository/EventRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/myproject/repository/IInvitationRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/myproject/repository/IInvitationRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/myproject/services/EventServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/myproject/services/EventServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/myproject/services/IEventService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/myproject/services/IEventService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/myproject/services/IInvitationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/myproject/services/IInvitationService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/myproject/services/InvitationServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/myproject/services/InvitationServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -131,7 +124,11 @@
       <workItem from="1683137597891" duration="4851000" />
       <workItem from="1683150398831" duration="10528000" />
       <workItem from="1683235619250" duration="17721000" />
-      <workItem from="1683297733576" duration="9761000" />
+      <workItem from="1683297733576" duration="16193000" />
+      <workItem from="1683463218972" duration="4765000" />
+      <workItem from="1683547740807" duration="753000" />
+      <workItem from="1683592026968" duration="785000" />
+      <workItem from="1683621316288" duration="2730000" />
     </task>
     <servers />
   </component>
