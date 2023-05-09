@@ -1,19 +1,29 @@
 package com.example.myproject.Controller;
 
 import com.example.myproject.Repository.IPost;
+import com.example.myproject.Repository.LikeRepo;
 import com.example.myproject.entities.Don;
 import com.example.myproject.entities.Post;
+import com.example.myproject.repositories.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import javax.management.loading.PrivateClassLoader;
+
 @RestController
 public class PostRestController {
     @Autowired
     private IPost postser;
 
+    @Autowired
+    private UserRepository userRepo;
+    
+    @Autowired
+    private LikeRepo likeRepo;
 
     @GetMapping("/post")
     @CrossOrigin
@@ -27,10 +37,11 @@ public class PostRestController {
     public Post retrievePostById(@PathVariable("id") Long id) {
         return postser.retrievePostById(id);
     }
-    @PostMapping("/addpost")
+    @PostMapping("/addpost/{id}")
     @CrossOrigin
-    public Post addPost(@RequestBody Post p) {
-
+    public Post addPost(@RequestBody Post p, @PathVariable("id") Long id) {
+    	
+    	p.setUser(userRepo.findById(id).get());
         return postser.addPost(p);
     }
 
@@ -89,5 +100,15 @@ public class PostRestController {
     public List<Post> getPostsByUserId(@PathVariable Long id) {
         return postser.getPostsById(id);
     }
+    
+    @PostMapping("/posts/{postId}/dissss/{userId}")
+    public void dislikePoost(@PathVariable Long postId, @PathVariable Long userId) {
+        postser.dislikePost(postId, userId);
+    }
+    @PostMapping("/posts/{postId}/likeees/{userId}")
+    public void likePoost(@PathVariable Long postId, @PathVariable Long userId) {
+        postser.likePost(postId, userId);
+    }
+    
 }
 

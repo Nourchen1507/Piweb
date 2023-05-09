@@ -5,10 +5,13 @@ import com.example.myproject.dto.CreateUpdateAppointmentDTO;
 import com.example.myproject.dto.MonthlyScheduledAppointmentCountDTO;
 import com.example.myproject.dto.UserAppointmentCountDTO;
 import com.example.myproject.dto.UserDTO;
+import com.example.myproject.entities.Alarm;
 import com.example.myproject.entities.Appointment;
 import com.example.myproject.entities.User;
 import com.example.myproject.repositories.AppointmentRepository;
 import com.example.myproject.repositories.UserRepository;
+import com.example.myproject.repository.AlarmRepository;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -34,7 +37,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     private final AppointmentRepository appointmentRepository;
     private final UserRepository userRepository;
     private final EmailService emailService;
-
+    private final AlarmRepository alarmRepo;
  
     @Override
     public List<AppointmentDTO> getAllAppointments() {
@@ -113,7 +116,15 @@ public class AppointmentServiceImpl implements AppointmentService {
         appointment.setDate(appointmentDate);
         appointment.setLieu(appointmentLieu);
 
-        appointmentRepository.save(appointment);
+        if (appointmentDto.getAlarmActivated()) {
+           // Alarm alarm = new Alarm();
+           // alarm.setAppointment(appointment);
+           // alarm = alarmRepo.save(alarm); // Save the Alarm entity first
+            appointment.setAlarm(alarmRepo.save(new Alarm())); // Then assign it to the Appointment entity
+        }
+
+        appointment = appointmentRepository.save(appointment); // Save the Appointment entity
+
 
         try {
             emailService.sendAppointmentCreatedEmail(helper, organization, appointment);

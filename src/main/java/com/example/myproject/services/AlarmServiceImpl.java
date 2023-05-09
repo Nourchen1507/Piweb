@@ -90,8 +90,8 @@ public class AlarmServiceImpl implements IAlarmService{
             List<Appointment> appointments = appointmentRepository.findAll();
             for (Appointment appointment:appointments
                  ) {
-                if(appointment.getDate().toLocalDate().equals(LocalDate.now())){
-                    sendEmail(appointment.getHelper().getMailAddress(), "khedmt hadhra si zebi", "hellooo");
+                if(appointment.getDate().toLocalDate().equals(LocalDate.now()) && appointment.getAlarm()!=null){
+                    sendEmail(appointment.getHelper().getMailAddress(), "Reminder", "Hello, this is a gentle reminder for your appointment which will be tomorrow.");
                     alarmRepository.delete(appointment.getAlarm());
                 }
             }

@@ -37,6 +37,7 @@ public class AppointmentController {
 
     @PostMapping
     public AppointmentDTO createAppointment(@RequestBody CreateUpdateAppointmentDTO appointment) {
+    	System.out.println("appointmenttt"+appointment);
         return appointmentService.createAppointment(appointment);
     }
 

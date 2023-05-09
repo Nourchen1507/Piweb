@@ -22,7 +22,7 @@ import lombok.Setter;
 @Getter 
 @Table(name = "reclamation")
 @NoArgsConstructor
-@ToString
+//@ToString
 public class Reclamation {
 
 	

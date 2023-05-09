@@ -1,6 +1,7 @@
 package com.example.myproject.Service;
 
 import com.example.myproject.Repository.IPost;
+import com.example.myproject.Repository.LikeRepo;
 import com.example.myproject.Repository.PostRespository;
 import com.example.myproject.entities.*;
 import com.example.myproject.repositories.UserRepository;
@@ -25,6 +26,9 @@ public   class PostServiceImpl implements IPost {
     UserRepository userRepository;
 //@Autowired
 //    DonRepositor donRepository ;
+    
+    @Autowired
+    private LikeRepo likeRepo;
 
     @Override
     public Post addPost(Post P) {
@@ -129,54 +133,48 @@ public   class PostServiceImpl implements IPost {
 
     @Override
     public void dislikePost(Long postId, Long userId) {
-        Post post = Postrepo.findById(postId).orElse(null);
-        if (post == null) {
-            throw new IllegalArgumentException("Post not found");
+
+
+        Optional<Post> postOptional = Postrepo.findById(postId);
+        Optional<User> userOptional = userRepository.findById(userId);
+
+        if (postOptional.isPresent() && userOptional.isPresent()) {
+            Post post = postOptional.get();
+            User user = userOptional.get();
+
+            System.out.println("postId = " + postId + ", userId = " + userId);
+
+            // Créer un nouveau like
+            Like like = new Like();
+            like.setPost(post);
+            like.setUser(user);
+            like.setLikeType(LikeType.DISLIKE);
+            likeRepo.save(like);
+
         }
-
-        User user = userRepository.findById(userId).orElse(null);
-        if (user == null) {
-            throw new IllegalArgumentException("User not found");
-        }
-
-        Like like = new Like();
-        like.setPost(post);
-        like.setUser(user);
-        like.setLikeType(LikeType.DISLIKE);
-
-        post.getLikes().add(like);
-        Postrepo.save(post);
-
     }
-
-
-
-
-    @Override
+@Override
     public void likePost(Long postId, Long userId) {
+    Optional<Post> postOptional = Postrepo.findById(postId);
+    Optional<User> userOptional = userRepository.findById(userId);
 
-        Post post =   Postrepo.findById(postId).orElseThrow(() -> new EntityNotFoundException("Post not found"));
-        if (post == null) {
-            throw new IllegalArgumentException("Post not found");
-        }
+    if (postOptional.isPresent() && userOptional.isPresent()) {
+        Post post = postOptional.get();
+        User user = userOptional.get();
 
-        User user = userRepository.findById(userId).orElse(null);
-        if (user == null) {
-            throw new IllegalArgumentException("User not found");
-        }
+        System.out.println("postId = " + postId + ", userId = " + userId);
 
-
+        // Créer un nouveau like
         Like like = new Like();
-        like.setUser(user);
         like.setPost(post);
+        like.setUser(user);
         like.setLikeType(LikeType.LIKE);
-
-        post.getLikes().add(like);
-        Postrepo.save(post);
-
+        likeRepo.save(like);
     }
-
-
-
-
 }
+}
+
+
+
+
+
