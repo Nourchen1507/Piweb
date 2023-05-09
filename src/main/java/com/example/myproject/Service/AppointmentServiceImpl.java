@@ -27,6 +27,10 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class AppointmentServiceImpl implements AppointmentService {
+
+    private static final String ORGANIZATION_ROLE_NAME = "organisation";
+    private static final String HELPER_ROLE_NAME = "helper";
+
     private final AppointmentRepository appointmentRepository;
     private final UserRepository userRepository;
     private final EmailService emailService;
@@ -34,8 +38,6 @@ public class AppointmentServiceImpl implements AppointmentService {
  
     @Override
     public List<AppointmentDTO> getAllAppointments() {
-    System.out.println("oraaaaaaaaa"+ appointmentRepository
-                .findAll());
         return appointmentRepository
                 .findAll()
                 .stream()
@@ -160,13 +162,13 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public List<UserAppointmentCountDTO> getAppointmentsByHelper() {
-        return getUserAppointmentCountDTOS("helper");
+        return getUserAppointmentCountDTOS(HELPER_ROLE_NAME);
     }
 
     @Override
     public List<UserAppointmentCountDTO> getAppointmentsByOrganization() {
 
-        return getUserAppointmentCountDTOS("organization");
+        return getUserAppointmentCountDTOS(ORGANIZATION_ROLE_NAME);
     }
 
     @Override
@@ -179,7 +181,7 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Override
     public List<UserDTO> getAllOrganizations() {
         return userRepository
-                .findAllByRole_RoleNameOrderByUserName("organization")
+                .findAllByRole_RoleNameOrderByUserName(ORGANIZATION_ROLE_NAME)
                 .stream()
                 .map(this::mapUser)
                 .collect(Collectors.toList());

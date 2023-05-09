@@ -110,7 +110,7 @@ public class ReclamationService {
 	    	}
 	    	List<Reclamation> signalss = signals.stream()
 	    	    .filter(reclamationn -> reclamationn.getIsSignal())
-	    	    .toList();
+					.collect(Collectors.toList());
 	    	System.out.println("filtered"+signalss);
 //if he is signaled 5 times, he will be banned
 	    	if(signalss.size()>=2) {

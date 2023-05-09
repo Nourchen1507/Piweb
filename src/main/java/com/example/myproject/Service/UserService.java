@@ -53,24 +53,17 @@ public class UserService {
     private SmsServiceImpl smsService;
 
     public void initRoleAndUser() {
+        addRoleIfItDoesNotExist("Admin");
+        addRoleIfItDoesNotExist("organisation");
+        addRoleIfItDoesNotExist("helper");
+    }
 
-    	roleDao.deleteAll();
-        Role adminRole = new Role();
-        adminRole.setRoleName("Admin");
-
-        roleDao.save(adminRole);
-
-        Role OrganisationRole = new Role();
-        OrganisationRole.setRoleName("organisation");
-
-        roleDao.save(OrganisationRole);
-
-        Role userRole = new Role();
-        userRole.setRoleName("helper");
-
-        roleDao.save(userRole);
-
-
+    private void addRoleIfItDoesNotExist(String roleName) {
+        if (!roleDao.existsByRoleName(roleName)) {
+            Role role = new Role();
+            role.setRoleName(roleName);
+            roleDao.save(role);
+        }
     }
 
     public User registerNewUser(User user) {
