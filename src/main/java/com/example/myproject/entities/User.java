@@ -14,25 +14,26 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
-@Getter
+
+@Getter 
 @Setter
 @Data
 @Entity
-@Table(	name = "user",
-		uniqueConstraints = {
-				@UniqueConstraint(columnNames = "userName"),
-				@UniqueConstraint(columnNames = "mailAddress")
-		})
+//@Table(	name = "user",
+//		uniqueConstraints = {
+//				@UniqueConstraint(columnNames = "userName"),
+//				@UniqueConstraint(columnNames = "mailAddress")
+//		})
 
 
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long idUser;
-	@Column(unique = true)
+	private Long id;
+	//@Column(unique = true)
 	private String userName;
-	@Column(unique = true)
+	//@Column(unique = true)
 	private String mailAddress;
 	private String userPhone;
 	@Column(name = "imageProfile",columnDefinition = "longtext")
@@ -49,85 +50,19 @@ public class User {
 	private Role role;
 
 
-	public String getImageProfile() {
-		return imageProfile;
-	}
-
-	public void setImageProfile(String imageProfile) {
-		this.imageProfile = imageProfile;
-	}
-
-	public Long getIdUser() {
-		return idUser;
-	}
-
-	public void setIdUser(Long idUser) {
-		this.idUser = idUser;
-	}
-
-	public String getLocation() {
-		return location;
-	}
-
-	public void setLocation(String location) {
-		this.location = location;
-	}
-
-	public String getCertificate() {
-		return certificate;
-	}
-
-	public void setCertificate(String certificate) {
-		this.certificate = certificate;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public String getMailAddress() {
-		return mailAddress;
-	}
-
-	public void setMailAddress(String mailAddress) {
-		this.mailAddress = mailAddress;
-	}
-
-	public String getUserPhone() {
-		return userPhone;
-	}
-
-
-	public void setUserPhone(String userPhone) {
-		this.userPhone = userPhone;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public boolean isVerified() {
-		return verified;
-	}
-
-	public void setVerified(boolean verified) {
-		this.verified = verified;
-	}
-
+	
 	@JsonIgnore
 	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private List<Post> posts = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "from", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@JsonIgnore
-	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
-	private List<Reclamation> reclamations = new ArrayList<>();
+	private List<Reclamation> froms = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "to", cascade = CascadeType.REMOVE, orphanRemoval = true)
+	@JsonIgnore
+	private List<Reclamation> tos = new ArrayList<>();
+	
 	@JsonIgnore
 	@OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private List<Event> events = new ArrayList<>();
@@ -138,6 +73,11 @@ public class User {
 	@OneToMany(mappedBy = "organization", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private List<Appointment> organizationAppointments = new ArrayList<>();
 
+	private long rateAverage;
+	
+	private Boolean alreadyBanned;
+
+	private LocalDateTime unbanDate;
 
 
 

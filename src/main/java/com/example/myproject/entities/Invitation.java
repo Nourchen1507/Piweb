@@ -1,36 +1,40 @@
 package com.example.myproject.entities;
 
+import java.io.Serializable;
 import java.util.Date;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import java.util.List;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Table(name = "invitation")
-public class Invitation {
-	
+
+public class Invitation implements Serializable {
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private Long id;
-	private Long helperInvited;
+	@Column(name="idInvitation")
+	private int idInvitation;
+
+	@Temporal (TemporalType.DATE)
+	private Date dateInvitation;
+
+	private String helperInvited;
+	private Boolean archive;
+	@Enumerated(EnumType.STRING)
+	Status statut;
+	private String name;
 	
 	@ManyToOne
-	@JoinColumn(name = "event_id")
 	@JsonIgnore
     private Event event;
+
 
 }

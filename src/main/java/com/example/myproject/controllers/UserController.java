@@ -38,6 +38,7 @@ public class UserController {
 
     @PostMapping("/registerNewUser")
     public ResponseType createUser( @RequestBody User user) {
+    	System.out.println("useeeeeeeeeeer"+user);
         if (userDao.existsByUserName(user.getUserName())) {
             return new ResponseType(400);
         }
@@ -98,10 +99,10 @@ public class UserController {
         return "This URL is only accessible to the helper";
     }
 
-    @DeleteMapping ({"/delete/{userName}"})
-    @PreAuthorize("hasRole('Admin')")
-    public void delete(@PathVariable String userName){
-        userService.delete(userName);
+    @DeleteMapping ({"/delete/{id}"})
+   // @PreAuthorize("hasRole('Admin')")
+    public void delete(@PathVariable Long id){
+        userService.delete(id);
     }
 
     @PutMapping(value="/update/{id}")
